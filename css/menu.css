@@ -16,12 +16,14 @@
 	
 #tabs {
     font: bold 11px/1.5em Verdana;
-	float:left;
+	
 	width:100%;
 	background:#E4E6EB;
 	font-size:93%;
 	line-height:normal;
 	}
+
+
 	
 #tabs ul {
 	margin:0;
@@ -37,7 +39,7 @@
 	
 #tabs a {
 	float:left;
-	background:url("../photo/tableft.gif") no-repeat left top;
+	background:url("../images/tableft.gif") no-repeat left top;
 	margin:0;
 	padding:0 0 0 4px;
 	text-decoration:none;
@@ -46,7 +48,7 @@
 #tabs a span {
 	float:left;
 	display:block;
-	background:url("../photo/tabright.gif") no-repeat right top;
+	background:url("../images/tabright.gif") no-repeat right top;
 	padding:5px 15px 4px 6px;
 	color:#FFF;
 	}

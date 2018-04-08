@@ -1,3 +1,14 @@
+
+<?php
+	session_start();
+        include("config.php");
+
+$strSQL = "SELECT * FROM member,studentt WHERE ID = '".$_SESSION['ID']."' ";
+	$objQuery = mysqli_query($objCon,$strSQL);
+	$objResult = mysqli_fetch_array($objQuery);
+
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,20 +18,20 @@
 
         <link rel="stylesheet" type="text/css" href="css/themeMax.css">
         <link rel="stylesheet" href="css/menu.css" type="text/css" />
+        
+        
     </head>
     <body>
         <nav>
             <div id="tabs">
   <ul>
-    <li><a href="index.html"><span>Index</span></a></li>
-    <li><a href="calendar.html"><span>Canlendar</span></a></li>
-    <li><a href="classRoom.html"><span>Classroom</span></a></li>
-     <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+    <li><a href="index.php"><span>Index</span></a></li>
+    <li><a href="calendar.php"><span>Canlendar</span></a></li>
+    <li><a href="classRoom.php"><span>Classroom</span></a></li>
   </ul>
 </div>
+            
+            
             </nav>
         <header class="header">
             <br>
@@ -28,6 +39,8 @@
         </header>
          
         <div id="container">
+            
+            
             <div class="closeFloating" >
              <a onclick="onOffbar()"><button id="textCloseFloating">Close</button></a>
             </div>
@@ -48,7 +61,28 @@
             
             
             <aside >
-                <h1>Aside</h1>
+
+                <?php
+                
+                if($_SESSION['ID']==""){
+                $button1 = "Login";
+                $button2 = "register";
+                $link1 = "login.php";
+                $link2 = "register.php";
+                }
+                else{
+                    echo "<h1>User:".$objResult["Username"]."</h1>"; 
+                    
+                $button1 = "Logout";
+                $button2 = "Edit Profile";
+                $link1 = "logout.php";
+                $link2 = "edit_profile.php";
+                }
+                echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
+                 echo  "<a href=".$link2."><h1>".$button2."</h1></a>";
+                ?>
+               
+           
             </aside>
 
             
@@ -68,4 +102,6 @@
     </body>    
 
 </html>
-
+<?php
+	mysqli_close($objCon);
+?>
