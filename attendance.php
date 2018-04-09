@@ -4,14 +4,15 @@
 <head>
     
     <style>
-        .tes33{
+        .chair{
             background-color: red;
             
         }
-        .tes6{
-            background-color: green;
-            
+        .tes15{
+            background-color:green;
         }
+        
+        
         
     td{border-style: solid;
     border-width: 5px;
@@ -25,15 +26,15 @@
     </head>
 <body>
 <?php
-$x="50";
+$x="60";
 $temp=1;
 echo  "<table cellspacing=50 cellpadding=50>";
     for($j=0;$j<$x/5;$j++){
-        echo "<tr>";
+        echo "<tr class='chair'>";
 
             for($i=0;$i<5;$i++){
         
-        echo "<td class=tes".$temp.">".$temp."</td>";
+        echo "<td class='tes".$temp."'>".$temp."</td>";
                 $temp++;
                 if($temp==$x+1)
                     break;
