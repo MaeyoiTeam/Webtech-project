@@ -11,6 +11,11 @@
         
     }
 
+
+
+
+
+
 function onOffbar() {
     var x = document.getElementById("floatingMenu");
     if (x.style.display === "none") {
