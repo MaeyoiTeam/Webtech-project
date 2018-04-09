@@ -2,7 +2,9 @@
 <head>
     <title>SIMPLE TIME JS</title>
     <script type="text/javascript">
+    var active =false;
     function start_timer(){
+        if(active){
         var timer = document.getElementById("my_timer").innerHTML;
         var arr=timer.split(":");
         var hour=arr[0];
@@ -30,14 +32,32 @@
         document.getElementById("my_timer").innerHTML = hour+":"+min+":"+sec;
         setTimeout(start_timer,1000);
         
-        
+        }
     
     }
+        
+        function changeState(){
+    if(active == false){
+        active = true;
+        start_timer();
+        console.log("Timer has been started");
+        document.getElementById("control").innerHTML="PAUSE";
+    }else{
+        active=false;
+        console.log("Timer is on pause");
+        document.getElementById("control").innerHTML="START";
+    }
+}
+        
+        
+        
+        
+        
 </script>
 </head>
 <body >
     <p><span id ="my_timer" style="color:#f00;font-size:2000%;font-weight:bold;">00:10:00</span></p>
-    <button onclick="start_timer();">Start</button>
+    <button onclick="changeState();" id="control">START</button>
     </body>
 
 </html>
