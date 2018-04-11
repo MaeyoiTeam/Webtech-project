@@ -3,13 +3,13 @@
 	session_start();
         include("config.php");
 
-$strSQL = "SELECT * FROM member,studentt WHERE ID = '".$_SESSION['ID']."' ";
+if(isset($_SESSION['ID'])){
+                $strSQL = "SELECT * FROM member WHERE ID = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objCon,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery);
-
+}
 
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -79,19 +79,22 @@ $strSQL = "SELECT * FROM member,studentt WHERE ID = '".$_SESSION['ID']."' ";
             <aside >
                  <?php
                 
-                if($_SESSION['ID']==""){
-                $button1 = "Login";
-                $button2 = "register";
-                $link1 = "login.php";
-                $link2 = "register.php";
-                }
-                else{
-                    echo "<h1>User:".$objResult["Username"]."</h1>"; 
+                if(isset($_SESSION['ID'])){
                     
+                echo "<h1>User:".$objResult["Username"]."</h1>"; 
                 $button1 = "Logout";
                 $button2 = "register";
                 $link1 = "logout.php";
                 $link2 = "register.php";
+
+                }
+                else{
+                    
+                $button1 = "Login";
+                $button2 = "register";
+                $link1 = "login.php";
+                $link2 = "register.php";
+                    
                 }
                 echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
                  echo  "<a href=".$link2."><h1>".$button2."</h1></a>";

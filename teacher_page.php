@@ -7,18 +7,10 @@
 		header("location:index.php");
 	}	
 
-
 	$strSQL = "SELECT * FROM member WHERE ID = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objCon,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
-    if($objResult["Status"]=="Teacher"){
-        $strSQL2 = "SELECT * FROM teachert WHERE User_ID = '" .$objResult['ID']."' ";
-	$objQuery2 = mysqli_query($objCon,$strSQL2);
-	$objResult2 = mysqli_fetch_array($objQuery2,MYSQLI_ASSOC);
-        $strSQL3 = "SELECT * FROM courset WHERE Teacher_ID = '" .$objResult2['Teacher_ID']."' ";
-	$objQuery3 = mysqli_query($objCon,$strSQL3);
-	$objResult3 = mysqli_fetch_array($objQuery3,MYSQLI_ASSOC);
-    }
+
 
 ?>
 
@@ -64,30 +56,19 @@
            
              <article >
                   <div class="content">
-   Welcome to Teacher Page! <br>
-  <table border="1" style="width: 300px">
-    <tbody>
-      <tr>
-        <td width="87"> &nbsp;First Name</td>
-        <td width="197"><?php echo $objResult2["First Name"];?>
-        </td>
-      </tr>
-      <tr>
-        <td> &nbsp;Last Name</td>
-        <td><?php 
-            
-            echo $objResult2["Last Name"];?></td>
-      </tr>
-        <td> &nbsp;Course Name</td>
-        <td><?php 
-            
-            echo $objResult3["CourseName"];?></td>
-    </tbody>
-  </table>
-  <br>
-  <a href="edit_profile.php">Edit</a><br>
-  <br>
-  <a href="logout.php">Logout</a>
+                      <h1> Welcome to Teacher Page! <br></h1>
+<?php
+                      
+                      $strSQL2 = "SELECT * FROM teachert WHERE ID = '".$_SESSION['ID']."' ";
+	$objQuery2 = mysqli_query($objCon,$strSQL2);
+	$objResult2 = mysqli_fetch_array($objQuery2,MYSQLI_ASSOC);
+                      echo "<p>".$objResult2["Fname"]." ".$objResult2["Lname"]."</p><br>";
+                      echo "<p>".$objResult2["Faculty"]." ".$objResult2["Major"]."</p><br>";
+                      
+                      
+                      ?>
+
+                      
                  </div>
             </article>
             
@@ -96,20 +77,12 @@
                 
                 <?php
                 
-                if($_SESSION['ID']==""){
-                $button1 = "Login";
-                $button2 = "register";
-                $link1 = "login.php";
-                $link2 = "register.php";
-                }
-                else{
                     echo "<h1>User:".$objResult["Username"]."</h1>"; 
                     
                 $button1 = "Logout";
                 $button2 = "Edit Profile";
                 $link1 = "logout.php";
                 $link2 = "edit_profile.php";
-                }
                 echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
                  echo  "<a href=".$link2."><h1>".$button2."</h1></a>";
                 ?>
@@ -136,5 +109,3 @@
 <?php
 	mysqli_close($objCon);
 ?>
-
-

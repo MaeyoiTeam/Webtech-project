@@ -3,13 +3,6 @@
 	session_start();
         include("config.php");
 
-if(isset($_SESSION['ID'])){
-                $strSQL = "SELECT * FROM member WHERE ID = '".$_SESSION['ID']."' ";
-	$objQuery = mysqli_query($objCon,$strSQL);
-	$objResult = mysqli_fetch_array($objQuery);
-}
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,12 +59,27 @@ if(isset($_SESSION['ID'])){
             
             
             <aside >
-
+                <div id=asidemenu>
                 <?php
+                    
                 
-                
+                    
+                    
+                    
                 if(isset($_SESSION['ID'])){
-               echo "<h1>User:".$objResult["Username"]."</h1>"; 
+                    
+                    if($_SESSION['Status']=="Teacher"){
+                $sql = "teachert";
+                    }
+                    else{
+                        $sql ="studentt";
+                    }
+                    $strSQL = "SELECT * FROM ".$sql." WHERE ID = '".$_SESSION['ID']."' ";
+	                $objQuery = mysqli_query($objCon,$strSQL);
+	                $objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+                    
+                    
+               echo "<h1>Hi! ".$objResult["Fname"]."<br>".$objResult["Lname"]."</h1>"; 
                     
                 $button1 = "Logout";
                 $button2 = "Edit Profile";
@@ -88,7 +96,7 @@ if(isset($_SESSION['ID'])){
                 echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
                 echo  "<a href=".$link2."><h1>".$button2."</h1></a>";
                 ?>
-               
+                </div>
            
             </aside>
        

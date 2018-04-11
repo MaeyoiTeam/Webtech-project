@@ -36,13 +36,21 @@ header{
 
 
 aside{
-    text-align:center;
+    text-align:left;
+    
     background-color: gainsboro;
     width: 20%;
     float: left;
     height: 100%;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+#asidemenu{
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size:16px;
+}
+
 
 article{
    
