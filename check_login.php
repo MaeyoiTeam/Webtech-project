@@ -1,4 +1,6 @@
 <?php
+
+
 	session_start();
         include("config.php");
 	$strSQL = "SELECT * FROM member WHERE Username = '".mysqli_real_escape_string($objCon,$_POST['txtUsername'])."' 
@@ -11,18 +13,26 @@
 	}
 	else
 	{
-			$_SESSION["ID"] = $objResult["ID"];
+        $_SESSION["ID"] = $objResult["ID"];
 			$_SESSION["Status"] = $objResult["Status"];
+        
+			
             $_SESSION["Active"] = $objResult["Active"];
+        
+        
+        $strSQL = "UPDATE member SET Active = '1' WHERE ID = '".$_SESSION["ID"]."' ";
+        $objQuery = mysqli_query($objCon,$strSQL);
+
+        
 			session_write_close();
 			
-			if($objResult["Status"] == "ADMIN")
+			if($objResult["Status"] == "Teacher")
 			{
-				header("location:admin_page.php");
+				header("location:teacher_page.php");
 			}
 			else
 			{
-				header("location:user_page.php");
+				header("location:student_page.php");
 			}
 	}
 	mysqli_close($objCon);

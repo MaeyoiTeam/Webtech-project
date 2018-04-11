@@ -7,9 +7,9 @@ include("config.php");
 		exit();
 	}
 
-	if($_SESSION['Status'] != "USER")
+	if($_SESSION['Status'] != "Student")
 	{
-		echo "This page for User only!";
+		echo "This page for Student only!";
 		exit();
 	}	
 	

@@ -2,17 +2,16 @@
 	session_start();
         include("config.php");
 
-	if($_SESSION['Status'] != "ADMIN")
+	if($_SESSION['Status'] != "Teacher")
 	{
 		header("location:index.php");
 	}	
-	
-	
+
 
 	$strSQL = "SELECT * FROM member WHERE ID = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objCon,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
-    if($objResult["Status"]=="ADMIN"){
+    if($objResult["Status"]=="Teacher"){
         $strSQL2 = "SELECT * FROM teachert WHERE User_ID = '" .$objResult['ID']."' ";
 	$objQuery2 = mysqli_query($objCon,$strSQL2);
 	$objResult2 = mysqli_fetch_array($objQuery2,MYSQLI_ASSOC);

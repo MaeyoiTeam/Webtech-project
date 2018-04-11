@@ -27,8 +27,8 @@
         <td> &nbsp;Status</td>
         <td>
           <select name="ddlStatus" id="ddlStatus">
-            <option value="ADMIN">ADMIN</option>
-            <option value="USER">USER</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
           </select>
 </td>
       </tr>

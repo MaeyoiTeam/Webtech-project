@@ -1,3 +1,14 @@
+<?php
+	session_start();
+    include("../config.php");
+
+       
+
+
+
+        ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,6 +94,8 @@
     
 
  
+    
+    
     function changeState_down(){
     if(activedown == false){
         activedown = true;
@@ -95,6 +108,8 @@
         document.getElementById("control_down").innerHTML="START";
     }
 }    
+    
+    
     function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -139,6 +154,7 @@ function checkTime(i) {
     document.getElementById("timer_up").innerHTML = "00"+":"+"00"+":"+"00";
     console.log("Timer has been reset");
         document.getElementById("control_up").innerHTML="START";
+        
 }
     
 </script>
@@ -169,35 +185,53 @@ function checkTime(i) {
 </head>
 
 <body  onload="startTime()">
-
+ 
     <h1 class="txttime"><div id="txt">    </div> </h1>
-    <h1 class="txttime" ><span id="timer_up" >00:00:00</span></h1>
-    
+  
     <button id="control_up" onclick="changeState_up();">START</button>
+  <form action="record_time.php" method="post">  
+    <h1 class="txttime" id="uptxt"><div id="timer_up" >00:00:00</div></h1>
+<input id="testtt" name="record_time" style="display:none">
     
-    <button  type="button" onclick="onOffbar()">Break Time</button><br>
+    <button id="reset"   value="Insert" onclick="getValue();"  >Finish</button>
+    </form>
+ <button  type="button" onclick="onOffbar()">Break Time</button><br>
+      
     
     
-    
-    <div id="breakbar" ><h1 class="txttime"><span id ="timer_down" >00:00:10</span></h1>
+    <div id="breakbar" style="display:none"><h1 class="txttime" ><div id ="timer_down" >00:00:10</div></h1>
         
     <button onclick="changeState_down();" id="control_down">START</button>
         
     </div>
-    <button id="reset" onclick="reset();">Finish</button>
-    <br>
 
     
     <script>
+        
+        
+        
+        function getValue(){
+            var myElement = document.getElementById("timer_up");
+            document.getElementById("testtt").value=myElement.innerHTML;
+            document.getElementById("myForm").submit();
+        }
+        
+        
         function onOffbar() {
+            
+            document.getElementById("control_up").innerHTML="START";
     var x = document.getElementById("breakbar");
-    if (x.style.display !== "none") {
+    if (x.style.display !== "none"&&activeup==false) {
         x.style.display = "none";
+        changeState_up();
        
-    } else {
+    } else if(x.style.display === "none"&&activeup==true){
+        changeState_up();
         x.style.display = "block";
     }
-}
+        }
+            
+            
     </script>
 
 </body>
