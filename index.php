@@ -2,32 +2,25 @@
 <?php
 	session_start();
         include("config.php");
-
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         
-        <title>Demo Maeyoi Project</title>
+        <title>Demo Webtech Project</title>
 
         <link rel="stylesheet" type="text/css" href="css/themeMax.css">
         <link rel="stylesheet" href="css/menu.css" type="text/css" />
-        
-        
+        <script type="text/javascript" src="js/mouse.js">  </script>
+        <script type="text/javascript" src="js/time.js">  </script>
     </head>
     
-    <body>
+    <body onload="startTime()">
         <nav>
             <div id="tabs">
-  <ul>
-    <li><a href="index.php"><span>Index</span></a></li>
-    <li><a href="calendar.php"><span>Canlendar</span></a></li>
-    <li><a href="classRoom.php"><span>Classroom</span></a></li>
-  </ul>
-</div>
-            
-            
+                <?php include 'php/menutop.php';?>
+            </div>
             </nav>
         
         <header class="header">
@@ -44,8 +37,24 @@
             
             <div id="floatingMenu">
                 
-                <iframe id="framefloating" src="php/timeInClass.php" 
-                        style="border:none;"></iframe>
+            <h1 class="txttime"><div id="txt">    </div> </h1>
+  
+            <button id="control_up" onclick="changeState_up();">START</button>
+            <form action="php/record_time.php" method="post">  
+            <h1 class="txttime" id="uptxt"><div id="timer_up" >00:00:00</div></h1>
+                    <input id="testtt" name="record_time" style="display:none">
+    
+            <button id="reset"  value="Insert" onclick="getValue();"  >Finish</button>
+            </form>
+            <button  type="button" onclick="breaktime()">Break Time</button><br>
+      
+    
+    
+            <div id="breakbar" style="display:none"><h1 class="txttime" ><div id ="timer_down" >00:00:10</div></h1>
+        
+            <button onclick="changeState_down();" id="control_down">START</button>
+        
+            </div>
             </div>
             
            
@@ -60,42 +69,7 @@
             
             <aside >
                 <div id=asidemenu>
-                <?php
-                    
-                
-                    
-                    
-                    
-                if(isset($_SESSION['ID'])){
-                    
-                    if($_SESSION['Status']=="Teacher"){
-                $sql = "teachert";
-                    }
-                    else{
-                        $sql ="studentt";
-                    }
-                    $strSQL = "SELECT * FROM ".$sql." WHERE ID = '".$_SESSION['ID']."' ";
-	                $objQuery = mysqli_query($objCon,$strSQL);
-	                $objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
-                    
-                    
-               echo "<h1>Hi! ".$objResult["Fname"]."<br>".$objResult["Lname"]."</h1>"; 
-                    
-                $button1 = "Logout";
-                $button2 = "Edit Profile";
-                $link1 = "logout.php";
-                $link2 = "edit_profile.php";
-                }
-                else{
-                    
-                $button1 = "Login";
-                $button2 = "register";
-                $link1 = "login.php";
-                $link2 = "register.php";
-                }
-                echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
-                echo  "<a href=".$link2."><h1>".$button2."</h1></a>";
-                ?>
+                <?php include 'php/menuright.php';?>
                 </div>
            
             </aside>
@@ -107,7 +81,7 @@
                 <h1>Footer</h1>
             </footer>
 
-        <script type="text/javascript" src="js/mouse.js">  </script>
+        
     </body>    
 
 </html>

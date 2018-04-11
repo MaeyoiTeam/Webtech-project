@@ -9,7 +9,7 @@
 	$objResult = mysqli_fetch_array($objQuery);
 	if(!$objResult)
 	{
-			echo "Username and Password Incorrect!";
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Username or Password Incorrect!');window.location.href='login.php';</script>");
 	}
 	else
 	{
