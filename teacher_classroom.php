@@ -80,26 +80,10 @@ else{
             
            
              <article >
-<?php
-$x="60";
-$temp=1;
-echo  "<table cellspacing=25 cellpadding=25>";
-    for($j=0;$j<$x/5;$j++){
-        echo "<tr class='chair'>";
-
-            for($i=0;$i<5;$i++){
-        
-        echo "<td class='tes".$temp."'>".$temp."</td>";
-                $temp++;
-                if($temp==$x+1)
-                    break;
-                            }
-        
-        
-        echo "</tr>";
-    }
-echo  "</table>";
-?>
+<form name="num" method="post" action="save_classroom.php">
+Number of students<input name="num1" type="number"  size="3">
+<input type="submit" name="Submit" value="Save">
+</form>
 </article>
             
             
