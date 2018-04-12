@@ -7,7 +7,7 @@
 		exit();	
 	}
 			
-	$strSQL2 = "INSERT INTO room (num1) VALUES ('".$num1."')";
+	$strSQL2 = "UPDATE room SET num1  = '".$num1."'  WHERE ID = '1'";
 		$objQuery2 = mysqli_query($objCon,$strSQL2);
 		
 		 echo ("<script LANGUAGE='JavaScript'>window.alert('Number of Student Complete!".$num1."');window.location.href='teacher_classroom2.php';</script>");
