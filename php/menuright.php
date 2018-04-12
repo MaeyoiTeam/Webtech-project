@@ -33,6 +33,7 @@
                 $button2 = "Register";
                 $link1 = "login.php";
                 $link2 = "register.php";
+                $link3 = "index.php";
                 }
                 echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
                 echo  "<a href=".$link2."><h1>".$button2."</h1></a>";
