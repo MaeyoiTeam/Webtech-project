@@ -14,6 +14,16 @@
         <link rel="stylesheet" href="css/menu.css" type="text/css" />
         <script type="text/javascript" src="js/mouse.js">  </script>
         <script type="text/javascript" src="js/time.js">  </script>
+    <style>       
+    td{border-style: solid;
+    border-width: 5px;
+    align-content: center;
+        border-radius: 20px;
+     font-size: 25;    
+        }
+    
+    
+    </style>
     </head>
     
     <body onload="startTime()">
@@ -59,40 +69,27 @@
             
            
              <article >
-<form name="form1" method="post" action="save_register.php">
-  Register Form <br>
-  <table width="400" border="1" style="width: 400px">
-    <tbody>
-      <tr>
-        <td width="125"> &nbsp;Username</td>
-        <td width="180">
-          <input name="txtUsername" type="text" id="txtUsername" size="20">
-        </td>
-      </tr>
-      <tr>
-        <td> &nbsp;Password</td>
-        <td><input name="txtPassword" type="password" id="txtPassword">
-        </td>
-      </tr>
-      <tr>
-        <td> &nbsp;Confirm Password</td>
-        <td><input name="txtConPassword" type="password" id="txtConPassword">
-        </td>
-      </tr>
-      <tr>
-        <td> &nbsp;Status</td>
-        <td>
-          <select name="ddlStatus" id="ddlStatus">
-            <option value="Teacher">Teacher</option>
-            <option value="Student">Student</option>
-          </select>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
-  <input type="submit" name="Submit" value="Save">
-</form></article>
+<?php
+$x="60";
+$temp=1;
+echo  "<table cellspacing=50 cellpadding=50>";
+    for($j=0;$j<$x/5;$j++){
+        echo "<tr class='chair'>";
+
+            for($i=0;$i<5;$i++){
+        
+        echo "<td class='tes".$temp."'>".$temp."</td>";
+                $temp++;
+                if($temp==$x+1)
+                    break;
+                            }
+        
+        
+        echo "</tr>";
+    }
+echo  "</table>";
+?>
+</article>
             
             
             <aside >
