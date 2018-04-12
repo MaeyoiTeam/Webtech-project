@@ -1,4 +1,5 @@
 
+
 <?php
 	session_start();
         include("config.php");
@@ -13,7 +14,14 @@ if(isset($_SESSION['ID'])){
 }
 else{
 	header("location:index.php");
-	}?>
+	}
+	
+	
+
+	$strSQL = "SELECT * FROM studentt WHERE ID = '".$_SESSION['ID']."' ";
+	$objQuery = mysqli_query($objCon,$strSQL);
+	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,19 +33,10 @@ else{
         <link rel="stylesheet" href="css/menu.css" type="text/css" />
         <script type="text/javascript" src="js/mouse.js">  </script>
         <script type="text/javascript" src="js/time.js">  </script>
-    <style>       
-    td{border-style: solid;
-    border-width: 5px;
-    align-content: center;
-        border-radius: 20px;
-     font-size: 25;    
-        }
-    
-    
-    </style>
     </head>
     
     <body onload="startTime()">
+        
         <nav>
             <div id="tabs">
                 <?php include 'php/menutop.php';?>
@@ -80,32 +79,28 @@ else{
             
            
              <article >
+                  <div class="content">
+                                          <h1> Welcome to Teacher Page! <br></h1>
 <?php
-$x="60";
-$temp=1;
-echo  "<table cellspacing=50 cellpadding=50>";
-    for($j=0;$j<$x/5;$j++){
-        echo "<tr class='chair'>";
+                      
+                      $strSQL2 = "SELECT * FROM teachert WHERE ID = '".$_SESSION['ID']."' ";
+	$objQuery2 = mysqli_query($objCon,$strSQL2);
+	$objResult2 = mysqli_fetch_array($objQuery2,MYSQLI_ASSOC);
+                      echo "<p>".$objResult2["Fname"]." ".$objResult2["Lname"]."</p><br>";
+                      echo "<p>".$objResult2["Faculty"]." ".$objResult2["Major"]."</p><br>";
+                      
+                      
+                      ?>
 
-            for($i=0;$i<5;$i++){
-        
-        echo "<td class='tes".$temp."'>".$temp."</td>";
-                $temp++;
-                if($temp==$x+1)
-                    break;
-                            }
-        
-        
-        echo "</tr>";
-    }
-echo  "</table>";
-?>
-</article>
+                      
+                 </div>
+            </article>
             
             
             <aside >
                 <div id=asidemenu>
                 <?php include 'php/menuright.php';?>
+                    
                 </div>
            
             </aside>
@@ -125,3 +120,4 @@ echo  "</table>";
 <?php
 	mysqli_close($objCon);
 ?>
+

@@ -9,10 +9,12 @@
                     if($_SESSION['Status']=="Teacher"){
                         $sql = "teachert";
                         $link2 ="teacher_page.php";
+ 			$link3 ="teacher_course.php";
                     }
                     else{
                         $sql ="studentt";
                         $link2 ="student_page.php";
+			$link3 ="student_course.php";
                     }
                     $strSQL = "SELECT * FROM ".$sql." WHERE ID = '".$_SESSION['ID']."' ";
 	                $objQuery = mysqli_query($objCon,$strSQL);
@@ -28,11 +30,11 @@
                 else{
                     
                 $button1 = "Login";
-                $button2 = "register";
+                $button2 = "Register";
                 $link1 = "login.php";
                 $link2 = "register.php";
                 }
                 echo  "<a href=".$link1."><h1>".$button1."</h1></a>";
                 echo  "<a href=".$link2."><h1>".$button2."</h1></a>";
-                echo  "<a href=ClassRoom.php><h1>Classroom</h1></a>";
+                echo  "<a href=".$link3."><h1>Course</h1></a>";
 ?>

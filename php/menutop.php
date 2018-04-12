@@ -2,7 +2,7 @@
 
   if(isset($_SESSION['ID'])){
 if ($_SESSION['Status']=="Teacher"){ $link2="teacher_classroom.php";}
-else{ $link2="teacher_classroom.php";}
+else{ $link2="student_classroom.php";}
 }
 
 echo "<ul>";

@@ -5,15 +5,21 @@
 if(isset($_SESSION['ID'])){
 		
 
-	if($_SESSION['Status'] != "Teacher")
+	if($_SESSION['Status'] != "Student")
 	{
-		echo "This page for Teacher only!";
+		echo "This page for Student only!";
 		exit();
 	}
 }
 else{
 	header("location:index.php");
-	}?>
+	}
+	
+
+	$strSQL = "SELECT * FROM studentt WHERE ID = '".$_SESSION['ID']."' ";
+	$objQuery = mysqli_query($objCon,$strSQL);
+	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,19 +31,10 @@ else{
         <link rel="stylesheet" href="css/menu.css" type="text/css" />
         <script type="text/javascript" src="js/mouse.js">  </script>
         <script type="text/javascript" src="js/time.js">  </script>
-    <style>       
-    td{border-style: solid;
-    border-width: 5px;
-    align-content: center;
-        border-radius: 20px;
-     font-size: 25;    
-        }
-    
-    
-    </style>
     </head>
     
     <body onload="startTime()">
+        
         <nav>
             <div id="tabs">
                 <?php include 'php/menutop.php';?>
@@ -80,32 +77,33 @@ else{
             
            
              <article >
-<?php
-$x="60";
-$temp=1;
-echo  "<table cellspacing=50 cellpadding=50>";
-    for($j=0;$j<$x/5;$j++){
-        echo "<tr class='chair'>";
-
-            for($i=0;$i<5;$i++){
-        
-        echo "<td class='tes".$temp."'>".$temp."</td>";
-                $temp++;
-                if($temp==$x+1)
-                    break;
-                            }
-        
-        
-        echo "</tr>";
-    }
-echo  "</table>";
-?>
-</article>
+                  <div class="content">
+                      
+                  Welcome to User Page! <br>
+  <table border="1" style="width: 300px">
+    <tbody>
+      <tr>
+        <td width="87"> &nbsp;ID</td>
+        <td width="197"><?php echo $objResult["ID"];?>
+        </td>
+      </tr>
+      <tr>
+        <td> &nbsp;Name</td>
+        <td><?php echo $objResult["Fname"]." ".$objResult["Lname"];?></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <a href="edit_profile.php">Edit</a><br>
+  <br>
+                 </div>
+            </article>
             
             
             <aside >
                 <div id=asidemenu>
                 <?php include 'php/menuright.php';?>
+                    
                 </div>
            
             </aside>
