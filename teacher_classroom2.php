@@ -14,8 +14,9 @@ if(isset($_SESSION['ID'])){
 else{
 	header("location:index.php");
 	}
-	$strSQL2 = "SELECT num1 FROM num1 WHERE ID = '1' ";
+	$strSQL2 = "SELECT num1 FROM room WHERE ID = '1' ";
     $objQuery2 = mysqli_query($objCon,$strSQL2);
+    $objResult2 = mysqli_fetch_array($objQuery2);
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,9 +85,7 @@ else{
            
              <article >
 <?php
-
-$x=$strSQL2;
-                 echo $objQuery2;
+$x=$objResult2['num1'];
 $temp=1;
 echo  "<table cellspacing=25 cellpadding=25>";
     for($j=0;$j<$x/5;$j++){
