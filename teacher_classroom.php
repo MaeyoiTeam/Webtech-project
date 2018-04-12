@@ -80,10 +80,12 @@ else{
             
            
              <article >
+                 <div class="content">
 <form name="num" method="post" action="save_classroom.php">
 Number of students<input name="num1" type="number"  size="3">
 <input type="submit" name="Submit" value="Save">
 </form>
+                 </div>
 </article>
             
             

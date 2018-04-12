@@ -15,8 +15,7 @@ else{
 	header("location:index.php");
 	}
 	$strSQL2 = "SELECT num1 FROM num1 WHERE ID = 1 ";
-	$objQuery2 = mysqli_query($objCon,$strSQL2);
-	$objResult2 = mysqli_fetch_array($objQuery2,MYSQLI_ASSOC);?>
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -85,7 +84,7 @@ else{
              <article >
 <?php
 
-$x=$objResult2(num1);
+$x=$strSQL2;
 $temp=1;
 echo  "<table cellspacing=25 cellpadding=25>";
     for($j=0;$j<$x/5;$j++){
