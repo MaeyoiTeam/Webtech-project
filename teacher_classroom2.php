@@ -93,7 +93,7 @@ echo  "<table cellspacing=25 cellpadding=25>";
 
             for($i=0;$i<5;$i++){
         
-        echo "<td class='tes".$temp."'>".$temp."</td>";
+        echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."</td>";
                 $temp++;
                 if($temp==$x+1)
                     break;
@@ -104,6 +104,19 @@ echo  "<table cellspacing=25 cellpadding=25>";
     }
 echo  "</table>";
 ?>
+                 <script>
+function clickme(obj){
+var x=document.getElementById(obj);
+if(x.style.backgroundColor=='rgb(0, 255, 0)'){
+x.style.backgroundColor = '#FF8000';
+}else {
+x.style.backgroundColor = '#00FF00';
+}
+}
+                 
+                 </script>
+                 
+                 
 </article>
             
             
