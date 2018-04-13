@@ -47,6 +47,8 @@ if(x.style.backgroundColor=='rgb(0, 255, 0)'){
 x.style.backgroundColor = '#FF8000';
 }else if(x.style.backgroundColor=='rgb(255, 128, 0)'){
 x.style.backgroundColor = '#FF0000';
+}else if(x.style.backgroundColor=='rgb(255, 0, 0)'){
+x.style.backgroundColor = '#FFFFFF';
 }else {
 x.style.backgroundColor = '#00FF00';
 }
