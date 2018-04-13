@@ -34,11 +34,27 @@ else{
     border-width: 5px;
     align-content: center;
         border-radius: 20px;
-     font-size: 25;    
+     font-size: 25;
+	backgroundColor : #FFFFFF;    
         }
     
     
     </style>
+<script>
+function clickme(obj){
+var x=document.getElementById(obj);
+if(x.style.backgroundColor=='rgb(0, 255, 0)'){
+x.style.backgroundColor = '#FF8000';
+}else if(x.style.backgroundColor=='rgb(255, 128, 0)'){
+x.style.backgroundColor = '#FF0000';
+}else if(x.style.backgroundColor=='rgb(255, 0, 0)'){
+x.style.backgroundColor = '#FFFFFF';
+}else {
+x.style.backgroundColor = '#00FF00';
+}
+}
+
+</script>
     </head>
     
     <body onload="startTime()">
@@ -98,27 +114,13 @@ echo  "<table cellspacing=25 cellpadding=25>";
                 if($temp==$x+1)
                     break;
                             }
-        
-        
         echo "</tr>";
     }
 echo  "</table>";
 ?>
-                 <script>
-function clickme(obj){
-var x=document.getElementById(obj);
-if(x.style.backgroundColor=='rgb(0, 255, 0)'){
-x.style.backgroundColor = '#FF8000';
-}else {
-x.style.backgroundColor = '#00FF00';
-}
-}
-                 
-                 </script>
-                 
-                 
+
 </article>
-            
+
             
             <aside >
                 <div id=asidemenu>
