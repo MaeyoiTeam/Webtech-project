@@ -79,17 +79,41 @@ else{
              <article >
                   <div class="content">
                       
-                  Welcome to User Page! <br>
-  <table border="1" style="width: 300px">
+                  Welcome to User Page! <br><br>
+  <table border="1" style="width: 350px">
     <tbody>
       <tr>
         <td width="87"> &nbsp;ID</td>
-        <td width="197"><?php echo $objResult["ID"];?>
+        <td width="220"><?php echo '&nbsp;',$objResult["ID"];?>
         </td>
       </tr>
       <tr>
         <td> &nbsp;Name</td>
-        <td><?php echo $objResult["Fname"]." ".$objResult["Lname"];?></td>
+        <td><?php echo '&nbsp;',$objResult["Fname"]." ".$objResult["Lname"];?></td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Faculty</td>
+        <td><?php echo '&nbsp;',$objResult["Faculty"];?></td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Major</td>
+        <td><?php echo '&nbsp;',$objResult["Major"];?></td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Birthdate</td>
+        <td><?php echo '&nbsp;',date('F j, Y',strtotime($objResult["Birthdate"]));?></td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Gender</td>
+        <td><?php echo '&nbsp;',$objResult["Gender"];?></td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Phone</td>
+        <td><?php echo '&nbsp;',$objResult["Phone"];?></td>
+      </tr>
+	  <tr>
+        <td> &nbsp;E-mail</td>
+        <td><?php echo '&nbsp;',$objResult["Email"];?></td>
       </tr>
     </tbody>
   </table>
