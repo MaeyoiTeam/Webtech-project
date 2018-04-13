@@ -52,7 +52,6 @@
             if(min==0){
                 if(hour==0){
                     alert("Time out");
-                    window.location.reload();
                     return;
                 }
                 hour--;

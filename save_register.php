@@ -30,8 +30,8 @@
 	else
 	{	
 		
-		$strSQL = "INSERT INTO member (Username,Password,Active,Status) VALUES ('".$_POST["txtUsername"]."', 
-		'".$_POST["txtPassword"]."','".$_POST["txtName"]."','".$_POST["ddlStatus"]."')";
+		$strSQL = "INSERT INTO member (Username,Password,Status) VALUES ('".$_POST["txtUsername"]."', 
+		'".$_POST["txtPassword"]."','".$_POST["ddlStatus"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
 		
 		echo "Register Completed!<br>";		
