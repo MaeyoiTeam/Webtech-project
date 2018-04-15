@@ -59,16 +59,12 @@
             
            
              <article >
+<div class="content">
 <form name="form1" method="post" action="save_edit.php">
   Edit Profile! <br><br>
   <table width="450" border="1" style="width: 450px">
     <tbody>
-      <tr>
-        <td width="150"> &nbsp;ID</td>
-        <td width="180">
-          <input name="txtID" type="text" id="txtID" size="20">
-        </td>
-      </tr>
+      
       <tr>
         <td> &nbsp;Name</td>
         <td>

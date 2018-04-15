@@ -34,9 +34,16 @@
 		'".$_POST["txtPassword"]."','".$_POST["txtName"]."','".$_POST["ddlStatus"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
 	}	
+	if($_POST["ddlStatus"]=="Student")
+	{
 		$strSQL = "INSERT INTO studentt (ID) VALUES ('".$_POST["txtID"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
-		
+	}
+	else
+	{
+		$strSQL = "INSERT INTO teachert (ID) VALUES ('".$_POST["txtID"]."')";
+		$objQuery = mysqli_query($objCon,$strSQL);
+	}
 		echo "Register Completed!<br>";		
 	
 		echo "<br> Go to <a href='login.php'>Login page</a>";
