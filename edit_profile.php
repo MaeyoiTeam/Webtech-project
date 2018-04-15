@@ -59,40 +59,58 @@
             
            
              <article >
-<form name="form1" method="post" action="save_profile.php">
-  Edit Profile! <br>
-  <table width="400" border="1" style="width: 400px">
+<form name="form1" method="post" action="save_edit.php">
+  Edit Profile! <br><br>
+  <table width="450" border="1" style="width: 450px">
     <tbody>
       <tr>
-        <td width="125"> &nbsp;ID</td>
+        <td width="150"> &nbsp;ID</td>
         <td width="180">
-          <?php echo $objResult["ID"];?>
+          <input name="txtID" type="text" id="txtID" size="20">
         </td>
       </tr>
       <tr>
-        <td> &nbsp;Username</td>
+        <td> &nbsp;Name</td>
         <td>
-          <?php echo $objResult["Username"];?>
+          <input name="txtFname" type="text" id="txtFname" size="20">
         </td>
       </tr>
       <tr>
-        <td> &nbsp;Password</td>
-        <td><input name="txtPassword" type="password" id="txtPassword" value="<?php echo $objResult["Password"];?>">
+        <td> &nbsp;Lastname</td>
+        <td><input name="txtLname" type="text" id="txtLname">
         </td>
       </tr>
       <tr>
-        <td> &nbsp;Confirm Password</td>
-        <td><input name="txtConPassword" type="password" id="txtConPassword" value="<?php echo $objResult["Password"];?>">
+        <td> &nbsp;Faculty</td>
+        <td><input name="txtFaculty" type="text" id="txtFaculty">
         </td>
       </tr>
       <tr>
-        <td>&nbsp;Name</td>
-        <td><input name="txtName" type="text" id="txtName" value="<?php echo $objResult["Name"];?>"></td>
+        <td>&nbsp;Major</td>
+        <td><input name="txtMajor" type="text" id="txtMajor">
+		</td>
       </tr>
       <tr>
-        <td> &nbsp;Status</td>
-        <td>
-          <?php echo $objResult["Status"];?>
+        <td> &nbsp;Birthdate <font size="-1" color="gray"><I>(YYYY-MM-DD)</I></font></td>
+        <td> <input name="txtBirthdate" type="text" id="txtBirthdate">
+        </td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Gender</td>
+        <td> <select name="txtGender" id="txtGender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </td>
+      </tr>
+	  <tr>
+        <td> &nbsp;Phone <font size="-1" color="gray"><I>(XXX-XXXXXXX)</I></font></td>
+        <td> <input name="txtPhone" type="text" id="txtPhone">
+        </td>
+      </tr>
+	  <tr>
+        <td> &nbsp;E-mail</td>
+        <td> <input name="txtEmail" type="text" id="txtEmail">
         </td>
       </tr>
     </tbody>

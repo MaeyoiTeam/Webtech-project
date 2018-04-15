@@ -30,15 +30,18 @@
 	else
 	{	
 		
-		$strSQL = "INSERT INTO member (Username,Password,Active,Status) VALUES ('".$_POST["txtUsername"]."', 
+		$strSQL = "INSERT INTO member (ID,Username,Password,Active,Status) VALUES ('".$_POST["txtID"]."','".$_POST["txtUsername"]."', 
 		'".$_POST["txtPassword"]."','".$_POST["txtName"]."','".$_POST["ddlStatus"]."')";
+		$objQuery = mysqli_query($objCon,$strSQL);
+	}	
+		$strSQL = "INSERT INTO studentt (ID) VALUES ('".$_POST["txtID"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
 		
 		echo "Register Completed!<br>";		
 	
 		echo "<br> Go to <a href='login.php'>Login page</a>";
 		
-	}
+	
 
 	mysqli_close($objCon);
 ?>

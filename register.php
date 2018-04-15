@@ -63,6 +63,12 @@
   Register Form <br>
   <table width="400" border="1" style="width: 400px">
     <tbody>
+	  <tr>
+        <td width="125"> &nbsp;ID</td>
+        <td width="180">
+          <input name="txtID" type="text" id="txtID" size="20">
+        </td>
+      </tr>
       <tr>
         <td width="125"> &nbsp;Username</td>
         <td width="180">
