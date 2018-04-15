@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2018 at 06:50 PM
+-- Generation Time: Apr 15, 2018 at 08:54 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -42,7 +42,7 @@ CREATE TABLE `course` (
 INSERT INTO `course` (`ID`, `course_name`, `Credit`, `Teacher_ID`) VALUES
 (1236052, 'Telecom', 3, NULL),
 (1236053, 'Coding', 3, NULL),
-(1236054, 'Database', 3, NULL),
+(1236054, 'Database', 3, 90000001),
 (1236055, 'Webtech', 3, NULL);
 
 -- --------------------------------------------------------
@@ -55,31 +55,32 @@ CREATE TABLE `coursedate` (
   `ID` int(11) NOT NULL,
   `course_ID` int(11) DEFAULT NULL,
   `sec` int(11) DEFAULT NULL,
-  `date_date` datetime DEFAULT NULL,
-  `daytime_ID` int(11) DEFAULT NULL
+  `date_date` date DEFAULT NULL,
+  `daytime_ID` int(11) DEFAULT NULL,
+  `duration` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `coursedate`
 --
 
-INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`) VALUES
-(180003, 1236052, 21, '2018-04-19 00:00:00', 1),
-(180011, 1236052, 21, '2018-04-26 00:00:00', 1),
-(180006, 1236052, 22, '2018-04-18 00:00:00', 2),
-(180014, 1236052, 22, '2018-04-25 00:00:00', 2),
-(180004, 1236053, 21, '2018-04-19 00:00:00', 2),
-(180012, 1236053, 21, '2018-04-26 00:00:00', 2),
-(180007, 1236053, 22, '2018-04-18 00:00:00', 3),
-(180015, 1236053, 22, '2018-04-25 00:00:00', 3),
-(180002, 1236054, 21, '2018-04-18 00:00:00', 2),
-(180010, 1236054, 21, '2018-04-25 00:00:00', 2),
-(180005, 1236054, 22, '2018-04-18 00:00:00', 1),
-(180013, 1236054, 22, '2018-04-25 00:00:00', 1),
-(180001, 1236055, 21, '2018-04-18 00:00:00', 1),
-(180009, 1236055, 21, '2018-04-25 00:00:00', 1),
-(180008, 1236055, 22, '2018-04-19 00:00:00', 1),
-(180016, 1236055, 22, '2018-04-26 00:00:00', 1);
+INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`, `duration`) VALUES
+(180001, 1236055, 21, '2018-04-18', 1, '00:00:02'),
+(180002, 1236054, 21, '2018-04-18', 2, '00:00:05'),
+(180003, 1236052, 21, '2018-04-19', 1, '00:00:00'),
+(180004, 1236053, 21, '2018-04-19', 2, '00:00:00'),
+(180005, 1236054, 22, '2018-04-18', 1, '00:00:00'),
+(180006, 1236052, 22, '2018-04-18', 2, '00:00:00'),
+(180007, 1236053, 22, '2018-04-18', 3, '00:00:00'),
+(180008, 1236055, 22, '2018-04-19', 1, '00:00:00'),
+(180009, 1236055, 21, '2018-04-25', 1, '00:00:00'),
+(180010, 1236054, 21, '2018-04-25', 2, '00:00:00'),
+(180011, 1236052, 21, '2018-04-26', 1, '00:00:10'),
+(180012, 1236053, 21, '2018-04-26', 2, '00:00:00'),
+(180013, 1236054, 22, '2018-04-25', 1, '00:00:00'),
+(180014, 1236052, 22, '2018-04-25', 2, '00:00:00'),
+(180015, 1236053, 22, '2018-04-25', 3, '00:00:00'),
+(180016, 1236055, 22, '2018-04-26', 1, '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`) V
 --
 
 CREATE TABLE `datedate` (
-  `ID` datetime NOT NULL
+  `ID` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -96,10 +97,10 @@ CREATE TABLE `datedate` (
 --
 
 INSERT INTO `datedate` (`ID`) VALUES
-('2018-04-18 00:00:00'),
-('2018-04-19 00:00:00'),
-('2018-04-25 00:00:00'),
-('2018-04-26 00:00:00');
+('2018-04-18'),
+('2018-04-19'),
+('2018-04-25'),
+('2018-04-26');
 
 -- --------------------------------------------------------
 
@@ -109,8 +110,8 @@ INSERT INTO `datedate` (`ID`) VALUES
 
 CREATE TABLE `daytime` (
   `ID` int(11) NOT NULL,
-  `start` datetime DEFAULT NULL,
-  `finish` datetime DEFAULT NULL
+  `start` time DEFAULT NULL,
+  `finish` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -118,9 +119,9 @@ CREATE TABLE `daytime` (
 --
 
 INSERT INTO `daytime` (`ID`, `start`, `finish`) VALUES
-(1, '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(2, '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(3, '1899-12-30 17:30:00', '1899-12-30 20:30:00');
+(1, '09:00:00', '12:00:00'),
+(2, '13:00:00', '16:00:00'),
+(3, '17:30:00', '20:30:00');
 
 -- --------------------------------------------------------
 
@@ -142,72 +143,10 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`ID`, `Username`, `Password`, `Active`, `Status`) VALUES
 (59010164, 'kanunsanan', '59010164', 0, 'Student'),
-(59010187, 'Jakkapat', '59010187', 1, 'Student'),
+(59010187, 'Jakkapat', '59010187', 0, 'Student'),
 (59010940, 'Phattana', '59010940', 0, 'Student'),
 (59011201, 'Waritsara', '59011201', 0, 'Student'),
 (90000001, 'Teacher', 'teacher', 0, 'Teacher');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `query1`
---
-
-CREATE TABLE `query1` (
-  `student_ID` int(11) DEFAULT NULL,
-  `Fname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Lname` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Faculty` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Major` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Birthdate` datetime DEFAULT NULL,
-  `Gender` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Phone` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `studentcourse_ID` int(11) DEFAULT NULL,
-  `sec` int(11) DEFAULT NULL,
-  `date_date` datetime DEFAULT NULL,
-  `course_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `start` datetime DEFAULT NULL,
-  `finish` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `query1`
---
-
-INSERT INTO `query1` (`student_ID`, `Fname`, `Lname`, `Faculty`, `Major`, `Birthdate`, `Gender`, `Phone`, `Email`, `studentcourse_ID`, `sec`, `date_date`, `course_name`, `start`, `finish`) VALUES
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 1, 21, '2018-04-18 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 5, 21, '2018-04-18 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 2, 21, '2018-04-18 00:00:00', 'Database', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 6, 21, '2018-04-18 00:00:00', 'Database', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 3, 21, '2018-04-19 00:00:00', 'Telecom', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 7, 21, '2018-04-19 00:00:00', 'Telecom', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 4, 21, '2018-04-19 00:00:00', 'Coding', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 8, 21, '2018-04-19 00:00:00', 'Coding', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 9, 22, '2018-04-18 00:00:00', 'Database', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 13, 22, '2018-04-18 00:00:00', 'Database', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 10, 22, '2018-04-18 00:00:00', 'Telecom', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 14, 22, '2018-04-18 00:00:00', 'Telecom', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 11, 22, '2018-04-18 00:00:00', 'Coding', '1899-12-30 17:30:00', '1899-12-30 20:30:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 15, 22, '2018-04-18 00:00:00', 'Coding', '1899-12-30 17:30:00', '1899-12-30 20:30:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 12, 22, '2018-04-19 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 16, 22, '2018-04-19 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 17, 21, '2018-04-25 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 21, 21, '2018-04-25 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 18, 21, '2018-04-25 00:00:00', 'Database', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 22, 21, '2018-04-25 00:00:00', 'Database', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 19, 21, '2018-04-26 00:00:00', 'Telecom', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 23, 21, '2018-04-26 00:00:00', 'Telecom', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineeing', 'Information Engineeing', '1997-01-19 00:00:00', 'Male', '087-7021640', '59010187@kmitl.ac.th', 20, 21, '2018-04-26 00:00:00', 'Coding', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010164, 'Kanutsanun', ' Nithipanich', 'Engineeing', 'Information Engineeing', '1997-08-28 00:00:00', 'Male', '094-2915705', '59010164@klmitl.ac.th', 24, 21, '2018-04-26 00:00:00', 'Coding', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 25, 22, '2018-04-25 00:00:00', 'Database', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 29, 22, '2018-04-25 00:00:00', 'Database', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 26, 22, '2018-04-25 00:00:00', 'Telecom', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 30, 22, '2018-04-25 00:00:00', 'Telecom', '1899-12-30 13:00:00', '1899-12-30 16:00:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 27, 22, '2018-04-25 00:00:00', 'Coding', '1899-12-30 17:30:00', '1899-12-30 20:30:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 31, 22, '2018-04-25 00:00:00', 'Coding', '1899-12-30 17:30:00', '1899-12-30 20:30:00'),
-(59010940, 'Phattana ', 'Wongyuttanapong', 'Engineeing', 'Information Engineeing', '1998-05-29 00:00:00', 'Male', '092-5524195', '59010940@kmitl.ac.th', 28, 22, '2018-04-26 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00'),
-(59011201, 'Waritsara', ' Siriaksorn', 'Engineeing', 'Information Engineeing', '1997-12-24 00:00:00', 'Female', '081-8123237', '59011201@kmitl.ac.th', 32, 22, '2018-04-26 00:00:00', 'Webtech', '1899-12-30 09:00:00', '1899-12-30 12:00:00');
 
 -- --------------------------------------------------------
 
@@ -217,15 +156,62 @@ INSERT INTO `query1` (`student_ID`, `Fname`, `Lname`, `Faculty`, `Major`, `Birth
 
 CREATE TABLE `room` (
   `ID` int(11) NOT NULL,
-  `num1` int(3) NOT NULL
+  `corusedate_ID` int(11) DEFAULT NULL,
+  `num1` int(3) NOT NULL,
+  `active` enum('wait','present','Late','miss') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'wait',
+  `student_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`ID`, `num1`) VALUES
-(1, 15);
+INSERT INTO `room` (`ID`, `corusedate_ID`, `num1`, `active`, `student_ID`) VALUES
+(643, 180002, 1, 'wait', NULL),
+(644, 180002, 2, 'wait', NULL),
+(645, 180002, 3, 'wait', NULL),
+(646, 180002, 4, 'wait', NULL),
+(647, 180002, 5, 'wait', NULL),
+(648, 180002, 6, 'wait', NULL),
+(649, 180002, 7, 'wait', NULL),
+(650, 180002, 8, 'wait', NULL),
+(651, 180002, 9, 'wait', NULL),
+(652, 180002, 10, 'wait', NULL),
+(653, 180002, 11, 'wait', NULL),
+(654, 180002, 12, 'wait', NULL),
+(655, 180002, 13, 'wait', NULL),
+(656, 180002, 14, 'wait', NULL),
+(657, 180002, 15, 'wait', NULL),
+(658, 180002, 16, 'wait', NULL),
+(659, 180002, 17, 'wait', NULL),
+(660, 180002, 18, 'wait', NULL),
+(661, 180002, 19, 'wait', NULL),
+(662, 180002, 20, 'wait', NULL),
+(663, 180002, 21, 'wait', NULL),
+(664, 180002, 22, 'wait', NULL),
+(665, 180002, 23, 'wait', NULL),
+(666, 180002, 24, 'wait', NULL),
+(667, 180002, 25, 'wait', NULL),
+(668, 180002, 26, 'wait', NULL),
+(669, 180002, 27, 'wait', NULL),
+(670, 180002, 28, 'wait', NULL),
+(671, 180002, 29, 'wait', NULL),
+(672, 180002, 30, 'wait', NULL),
+(673, 180011, 1, 'wait', NULL),
+(674, 180011, 2, 'wait', NULL),
+(675, 180011, 3, 'wait', NULL),
+(676, 180011, 4, 'wait', NULL),
+(677, 180011, 5, 'wait', NULL),
+(678, 180011, 6, 'wait', NULL),
+(679, 180011, 7, 'wait', NULL),
+(680, 180011, 8, 'wait', NULL),
+(681, 180011, 9, 'wait', NULL),
+(682, 180011, 10, 'wait', NULL),
+(683, 180011, 11, 'wait', NULL),
+(684, 180011, 12, 'wait', NULL),
+(685, 180011, 13, 'wait', NULL),
+(686, 180011, 14, 'wait', NULL),
+(687, 180011, 15, 'wait', NULL);
 
 -- --------------------------------------------------------
 
@@ -256,7 +242,7 @@ CREATE TABLE `studentcourse` (
   `course_ID` int(11) DEFAULT NULL,
   `student_ID` int(11) DEFAULT NULL,
   `sec` int(11) DEFAULT NULL,
-  `date_date` datetime DEFAULT NULL
+  `date_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -264,38 +250,38 @@ CREATE TABLE `studentcourse` (
 --
 
 INSERT INTO `studentcourse` (`ID`, `course_ID`, `student_ID`, `sec`, `date_date`) VALUES
-(7, 1236052, 59010164, 21, '2018-04-19 00:00:00'),
-(23, 1236052, 59010164, 21, '2018-04-26 00:00:00'),
-(3, 1236052, 59010187, 21, '2018-04-19 00:00:00'),
-(19, 1236052, 59010187, 21, '2018-04-26 00:00:00'),
-(10, 1236052, 59010940, 22, '2018-04-18 00:00:00'),
-(26, 1236052, 59010940, 22, '2018-04-25 00:00:00'),
-(14, 1236052, 59011201, 22, '2018-04-18 00:00:00'),
-(30, 1236052, 59011201, 22, '2018-04-25 00:00:00'),
-(8, 1236053, 59010164, 21, '2018-04-19 00:00:00'),
-(24, 1236053, 59010164, 21, '2018-04-26 00:00:00'),
-(4, 1236053, 59010187, 21, '2018-04-19 00:00:00'),
-(20, 1236053, 59010187, 21, '2018-04-26 00:00:00'),
-(11, 1236053, 59010940, 22, '2018-04-18 00:00:00'),
-(27, 1236053, 59010940, 22, '2018-04-25 00:00:00'),
-(15, 1236053, 59011201, 22, '2018-04-18 00:00:00'),
-(31, 1236053, 59011201, 22, '2018-04-25 00:00:00'),
-(6, 1236054, 59010164, 21, '2018-04-18 00:00:00'),
-(22, 1236054, 59010164, 21, '2018-04-25 00:00:00'),
-(2, 1236054, 59010187, 21, '2018-04-18 00:00:00'),
-(18, 1236054, 59010187, 21, '2018-04-25 00:00:00'),
-(9, 1236054, 59010940, 22, '2018-04-18 00:00:00'),
-(25, 1236054, 59010940, 22, '2018-04-25 00:00:00'),
-(13, 1236054, 59011201, 22, '2018-04-18 00:00:00'),
-(29, 1236054, 59011201, 22, '2018-04-25 00:00:00'),
-(5, 1236055, 59010164, 21, '2018-04-18 00:00:00'),
-(21, 1236055, 59010164, 21, '2018-04-25 00:00:00'),
-(1, 1236055, 59010187, 21, '2018-04-18 00:00:00'),
-(17, 1236055, 59010187, 21, '2018-04-25 00:00:00'),
-(12, 1236055, 59010940, 22, '2018-04-19 00:00:00'),
-(28, 1236055, 59010940, 22, '2018-04-26 00:00:00'),
-(16, 1236055, 59011201, 22, '2018-04-19 00:00:00'),
-(32, 1236055, 59011201, 22, '2018-04-26 00:00:00');
+(7, 1236052, 59010164, 21, '2018-04-19'),
+(23, 1236052, 59010164, 21, '2018-04-26'),
+(3, 1236052, 59010187, 21, '2018-04-19'),
+(19, 1236052, 59010187, 21, '2018-04-26'),
+(10, 1236052, 59010940, 22, '2018-04-18'),
+(26, 1236052, 59010940, 22, '2018-04-25'),
+(14, 1236052, 59011201, 22, '2018-04-18'),
+(30, 1236052, 59011201, 22, '2018-04-25'),
+(8, 1236053, 59010164, 21, '2018-04-19'),
+(24, 1236053, 59010164, 21, '2018-04-26'),
+(4, 1236053, 59010187, 21, '2018-04-19'),
+(20, 1236053, 59010187, 21, '2018-04-26'),
+(11, 1236053, 59010940, 22, '2018-04-18'),
+(27, 1236053, 59010940, 22, '2018-04-25'),
+(15, 1236053, 59011201, 22, '2018-04-18'),
+(31, 1236053, 59011201, 22, '2018-04-25'),
+(6, 1236054, 59010164, 21, '2018-04-18'),
+(22, 1236054, 59010164, 21, '2018-04-25'),
+(2, 1236054, 59010187, 21, '2018-04-18'),
+(18, 1236054, 59010187, 21, '2018-04-25'),
+(9, 1236054, 59010940, 22, '2018-04-18'),
+(25, 1236054, 59010940, 22, '2018-04-25'),
+(13, 1236054, 59011201, 22, '2018-04-18'),
+(29, 1236054, 59011201, 22, '2018-04-25'),
+(5, 1236055, 59010164, 21, '2018-04-18'),
+(21, 1236055, 59010164, 21, '2018-04-25'),
+(1, 1236055, 59010187, 21, '2018-04-18'),
+(17, 1236055, 59010187, 21, '2018-04-25'),
+(12, 1236055, 59010940, 22, '2018-04-19'),
+(28, 1236055, 59010940, 22, '2018-04-26'),
+(16, 1236055, 59011201, 22, '2018-04-19'),
+(32, 1236055, 59011201, 22, '2018-04-26');
 
 -- --------------------------------------------------------
 
@@ -368,8 +354,8 @@ ALTER TABLE `coursedate`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `course_ID` (`course_ID`,`sec`,`date_date`,`daytime_ID`),
   ADD KEY `sec` (`sec`),
-  ADD KEY `date_date` (`date_date`),
-  ADD KEY `daytime_ID` (`daytime_ID`);
+  ADD KEY `daytime_ID` (`daytime_ID`),
+  ADD KEY `date_date` (`date_date`);
 
 --
 -- Indexes for table `datedate`
@@ -396,7 +382,9 @@ ALTER TABLE `member`
 -- Indexes for table `room`
 --
 ALTER TABLE `room`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `corusedate_ID` (`corusedate_ID`,`student_ID`),
+  ADD KEY `student_ID` (`student_ID`);
 
 --
 -- Indexes for table `sec`
@@ -411,7 +399,8 @@ ALTER TABLE `studentcourse`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `course_ID` (`course_ID`,`student_ID`,`sec`,`date_date`),
   ADD KEY `student_ID` (`student_ID`),
-  ADD KEY `sec` (`sec`);
+  ADD KEY `sec` (`sec`),
+  ADD KEY `date_date` (`date_date`);
 
 --
 -- Indexes for table `studentt`
@@ -433,7 +422,7 @@ ALTER TABLE `teachert`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=688;
 
 --
 -- Constraints for dumped tables
@@ -450,9 +439,16 @@ ALTER TABLE `course`
 --
 ALTER TABLE `coursedate`
   ADD CONSTRAINT `coursedate_ibfk_1` FOREIGN KEY (`sec`) REFERENCES `sec` (`ID`),
-  ADD CONSTRAINT `coursedate_ibfk_2` FOREIGN KEY (`date_date`) REFERENCES `datedate` (`ID`),
   ADD CONSTRAINT `coursedate_ibfk_3` FOREIGN KEY (`daytime_ID`) REFERENCES `daytime` (`ID`),
-  ADD CONSTRAINT `coursedate_ibfk_4` FOREIGN KEY (`course_ID`) REFERENCES `course` (`ID`);
+  ADD CONSTRAINT `coursedate_ibfk_4` FOREIGN KEY (`course_ID`) REFERENCES `course` (`ID`),
+  ADD CONSTRAINT `coursedate_ibfk_5` FOREIGN KEY (`date_date`) REFERENCES `datedate` (`ID`);
+
+--
+-- Constraints for table `room`
+--
+ALTER TABLE `room`
+  ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`student_ID`) REFERENCES `studentt` (`ID`),
+  ADD CONSTRAINT `room_ibfk_2` FOREIGN KEY (`corusedate_ID`) REFERENCES `coursedate` (`ID`);
 
 --
 -- Constraints for table `studentcourse`
@@ -460,7 +456,8 @@ ALTER TABLE `coursedate`
 ALTER TABLE `studentcourse`
   ADD CONSTRAINT `studentcourse_ibfk_1` FOREIGN KEY (`student_ID`) REFERENCES `studentt` (`ID`),
   ADD CONSTRAINT `studentcourse_ibfk_2` FOREIGN KEY (`sec`) REFERENCES `sec` (`ID`),
-  ADD CONSTRAINT `studentcourse_ibfk_3` FOREIGN KEY (`course_ID`) REFERENCES `course` (`ID`);
+  ADD CONSTRAINT `studentcourse_ibfk_3` FOREIGN KEY (`course_ID`) REFERENCES `course` (`ID`),
+  ADD CONSTRAINT `studentcourse_ibfk_4` FOREIGN KEY (`date_date`) REFERENCES `datedate` (`ID`);
 
 --
 -- Constraints for table `studentt`
