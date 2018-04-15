@@ -10,16 +10,18 @@ if(isset($_SESSION['ID'])){
 		echo "This page for Teacher only!";
 		exit();
 	}
+    if(!isset($_SESSION["num1"])&&!isset($_SESSION["coursedate"])){
+        header("location:teacher_classroom.php");
+}
 }
 else{
 	header("location:index.php");
 	}
 
-$sql="SELECT studentt.ID FROM studentt , coursedate,studentcourse
-WHERE coursedate.ID = '180001' AND coursedate.sec = studentcourse.sec 
-AND coursedate.date_date=studentcourse.date_date
-AND studentcourse.student_ID=studentt.ID
-AND coursedate.course_ID=studentcourse.course_ID";
+
+$sql="SELECT room.student_ID 
+FROM room
+WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
 $ID = array();
 
 $x=1;
@@ -119,15 +121,22 @@ x.style.backgroundColor = '#00FF00';
              <article >
 <?php
 $temp=1;
+$x=$_SESSION["num1"];
+
+
 echo  "<table cellspacing=25 cellpadding=25>";
     for($j=0;$j<$x/5;$j++){
         echo "<tr class='chair'>";
 
             for($i=0;$i<5;$i++){
         
-        echo "<td id='tes".$temp."' onclick='clickme(id)'>".$ID[$temp]."</td>";
+        echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."<br>";
+                if(isset($ID[$temp-1])){
+                    echo $ID[$temp-1];
+}
+                echo "</td>";
                 $temp++;
-                if($temp==$x)
+                if($temp==$x+1)
                     break;
                             }
         echo "</tr>";
