@@ -10,13 +10,32 @@ if(isset($_SESSION['ID'])){
 		echo "This page for Teacher only!";
 		exit();
 	}
+    if(!isset($_SESSION["num1"])&&!isset($_SESSION["coursedate"])){
+        header("location:teacher_classroom.php");
+}
 }
 else{
 	header("location:index.php");
 	}
-	$strSQL2 = "SELECT num1 FROM room WHERE ID = '1' ";
-    $objQuery2 = mysqli_query($objCon,$strSQL2);
-    $objResult2 = mysqli_fetch_array($objQuery2);
+
+
+$sql="SELECT room.student_ID 
+FROM room
+WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
+$ID = array();
+
+$x=1;
+if ($result=mysqli_query($objCon,$sql))
+  {
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      $ID[$x]=$row[0];
+      $x++;
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -101,15 +120,21 @@ x.style.backgroundColor = '#00FF00';
            
              <article >
 <?php
-$x=$objResult2['num1'];
 $temp=1;
+$x=$_SESSION["num1"];
+
+
 echo  "<table cellspacing=25 cellpadding=25>";
     for($j=0;$j<$x/5;$j++){
         echo "<tr class='chair'>";
 
             for($i=0;$i<5;$i++){
         
-        echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."</td>";
+        echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."<br>";
+                if(isset($ID[$temp-1])){
+                    echo $ID[$temp-1];
+}
+                echo "</td>";
                 $temp++;
                 if($temp==$x+1)
                     break;

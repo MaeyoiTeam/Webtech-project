@@ -1,0 +1,3 @@
+SELECT studentt.*,studentcourse.*,course.course_name,studentcourse.date_date,daytime.start,daytime.finish
+FROM studentt,studentcourse,course ,coursedate,daytime
+WHERE studentt.ID=studentcourse.student_ID AND course.ID=studentcourse.course_ID  AND studentcourse.date_date=coursedate.date_date AND studentcourse.sec=coursedate.sec AND studentcourse.course_ID=coursedate.course_ID AND daytime.ID=coursedate.daytime_ID

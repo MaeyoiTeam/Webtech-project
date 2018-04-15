@@ -80,10 +80,63 @@ else{
             
            
              <article >
-                 <div class="content">
+
+                 <div class="content" >
 <form name="num" method="post" action="save_classroom.php">
-Number of students<input name="num1" type="number"  size="3">
-<input type="submit" name="Submit" value="Save">
+                     Subject :<select name='subject'>
+<?php
+                     $subject = "SELECT course.ID FROM course";
+                     if($result=mysqli_query($objCon,$subject)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+?>
+                     </select>
+                     Date :<select name='date'>
+                     <?php
+
+                    $date = "SELECT datedate.ID FROM datedate ";
+                     if($result=mysqli_query($objCon,$date)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option  value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+                     
+                     ?>
+                     </select>
+
+                    Sec :<select name='sec'>
+                     <?php
+                    $sec = "SELECT sec.ID FROM sec ";
+                     if($result=mysqli_query($objCon,$sec)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+                     
+                     ?>
+                     </select>
+
+                     <br>
+        Number of students :<input name="num1" type="number"  size="3">
+        <input type="submit" name="Submit" value="Save">
+
+
+
+
 </form>
                  </div>
 </article>
