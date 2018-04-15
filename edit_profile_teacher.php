@@ -1,26 +1,7 @@
 
-
 <?php
 	session_start();
         include("config.php");
-if(isset($_SESSION['ID'])){
-		
-
-	if($_SESSION['Status'] != "Teacher")
-	{
-		echo "This page for Teacher only!";
-		exit();
-	}
-}
-else{
-	header("location:index.php");
-	}
-	
-	
-
-	$strSQL = "SELECT * FROM teachert WHERE ID = '".$_SESSION['ID']."' ";
-	$objQuery = mysqli_query($objCon,$strSQL);
-	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +17,6 @@ else{
     </head>
     
     <body onload="startTime()">
-        
         <nav>
             <div id="tabs">
                 <?php include 'php/menutop.php';?>
@@ -79,57 +59,67 @@ else{
             
            
              <article >
-                  <div class="content">
-             Welcome to Teacher Page! <br><br>
-			 <table border="1" style="width: 350px">
+<div class="content">
+<form name="form2" method="post" action="save_edit_teacher.php">
+  Edit Profile! <br><br>
+  <table width="450" border="1" style="width: 450px">
     <tbody>
+      
       <tr>
-        <td width="87"> &nbsp;ID</td>
-        <td width="220"><?php echo '&nbsp;',$objResult["ID"];?>
+        <td> &nbsp;Name</td>
+        <td>
+          <input name="txtFname" type="text" id="txtFname" size="20">
         </td>
       </tr>
       <tr>
-        <td> &nbsp;Name</td>
-        <td><?php echo '&nbsp;',$objResult["Fname"]." ".$objResult["Lname"];?></td>
+        <td> &nbsp;Lastname</td>
+        <td><input name="txtLname" type="text" id="txtLname">
+        </td>
       </tr>
-	  <tr>
+      <tr>
         <td> &nbsp;Faculty</td>
-        <td><?php echo '&nbsp;',$objResult["Faculty"];?></td>
+        <td><input name="txtFaculty" type="text" id="txtFaculty">
+        </td>
       </tr>
-	  <tr>
-        <td> &nbsp;Major</td>
-        <td><?php echo '&nbsp;',$objResult["Major"];?></td>
+      <tr>
+        <td>&nbsp;Major</td>
+        <td><input name="txtMajor" type="text" id="txtMajor">
+		</td>
       </tr>
-	  <tr>
-        <td> &nbsp;Birthdate</td>
-        <td><?php echo '&nbsp;',date('F j, Y',strtotime($objResult["Birthdate"]));?></td>
+      <tr>
+        <td> &nbsp;Birthdate <font size="-1" color="gray"><I>(YYYY-MM-DD)</I></font></td>
+        <td> <input name="txtBirthdate" type="text" id="txtBirthdate">
+        </td>
       </tr>
 	  <tr>
         <td> &nbsp;Gender</td>
-        <td><?php echo '&nbsp;',$objResult["Gender"];?></td>
+        <td> <select name="txtGender" id="txtGender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </td>
       </tr>
 	  <tr>
-        <td> &nbsp;Phone</td>
-        <td><?php echo '&nbsp;',$objResult["Phone"];?></td>
+        <td> &nbsp;Phone <font size="-1" color="gray"><I>(XXX-XXXXXXX)</I></font></td>
+        <td> <input name="txtPhone" type="text" id="txtPhone">
+        </td>
       </tr>
 	  <tr>
         <td> &nbsp;E-mail</td>
-        <td><?php echo '&nbsp;',$objResult["Email"];?></td>
+        <td> <input name="txtEmail" type="text" id="txtEmail">
+        </td>
       </tr>
     </tbody>
   </table>
   <br>
-  <a href="edit_profile_teacher.php">Edit profile</a><br>
-  <br>
-                 </div>
-            </article>
-          
+  <input type="submit" name="Submit" value="Save">
+</form>
+</article>
             
             
             <aside >
                 <div id=asidemenu>
                 <?php include 'php/menuright.php';?>
-                    
                 </div>
            
             </aside>
@@ -149,4 +139,3 @@ else{
 <?php
 	mysqli_close($objCon);
 ?>
-
