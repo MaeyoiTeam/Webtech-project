@@ -1,60 +1,51 @@
 <?php
-	session_start();
-    include("../config.php");
-
-       
-
-
-
-        ?>
+$sql="SELECT current_start FROM coursedate WHERE ID='".$_SESSION['coursedate']."'";
+$result=mysqli_query($objCon,$sql);
+$row=mysqli_fetch_row($result);
+  mysqli_free_result($result);
 
 
-<!DOCTYPE html>
-<html>
-<head>
+
+if(isset($_SESSION["Status"])){
+ if($_SESSION['Status'] == "Teacher"){ 
+            echo    "<form id = 'start' action='php/start_time.php' method='post'>";}
+            echo    "<h1 class='txttime'><div id='txt'>    </div> </h1>";
+ if($_SESSION['Status'] == "Teacher"){ 
+            echo    "<button id='control_up' value='Insert' onclick='getValue('txt','startspace','start');'>START</button>";
+            echo    "</form>";
+
+            echo    "<form id = 'record' action='php/record_time.php' method='post'>";}
+        echo "<h3>Course:";
+    if(isset($_SESSION["coursedate"])){ echo $_SESSION['coursedate'];}
+
+            echo    "</h3><h1 class='txttime' id='uptxt'><div id='timer_up' ></div></h1>";
+if($_SESSION['Status'] == "Teacher"){
+            echo    "<input id='testtt' name='record_time'style='display:none'>";
+
+            echo    "<button id='reset'  value='Insert' onclick='getValue('timer_up','testt','record');'>Finish</button>";
+            echo    "</form>";
+
+            echo    "<button  type='button' onclick='breaktime()'>Break Time</button><br>";
+  }    
     
     
-<script type="text/javascript" src="../js/time.js"> 
-    
-   
+            echo    "<div id='breakbar' style='display:none'><h1 class='txttime' ><div id ='timer_down' >00:00:10</div></h1>";
+   if($_SESSION['Status'] == "Teacher"){     
+            echo    "<button onclick='changeState_down();' id='control_down'>START</button>";
+   }
+            echo    "</div>";
+}
+?>
+
+<script type="text/javascript">
+setInterval(function()
+{
+
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET","php/time.php",false);
+    xmlhttp.send(null);
+    document.getElementById("timer_up").innerHTML=xmlhttp.responseText;
+
+},1000);
+
 </script>
-    
-    <style>
-
-
-        button{
-            text-align: center;
-            width: 135px;
-            height: 30px;
-        }
-        
-        .txttime{
-            margin-left: 15px;
-            font-size: 30px;
-            
-        }
-        
-        #timer_down{
-            color:red;
-            
-        }
-        
-    </style>
-    
-    
-</head>
-
-<body  onload="startTime()">
-
-    
-    <script>
-        
-        
-        
-
-            
-            
-    </script>
-
-</body>
-</html>

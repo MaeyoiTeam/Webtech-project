@@ -56,25 +56,7 @@ else{
             </div>
             
             <div id="floatingMenu">
-                
-            <h1 class="txttime"><div id="txt">    </div> </h1>
-  
-            <button id="control_up" onclick="changeState_up();">START</button>
-            <form action="php/record_time.php" method="post">  
-            <h1 class="txttime" id="uptxt"><div id="timer_up" >00:00:00</div></h1>
-                    <input id="testtt" name="record_time" style="display:none">
-    
-            <button id="reset"  value="Insert" onclick="getValue();"  >Finish</button>
-            </form>
-            <button  type="button" onclick="breaktime()">Break Time</button><br>
-      
-    
-    
-            <div id="breakbar" style="display:none"><h1 class="txttime" ><div id ="timer_down" >00:00:10</div></h1>
-        
-            <button onclick="changeState_down();" id="control_down">START</button>
-        
-            </div>
+            <?php include'php/timeInClass.php';?>
             </div>
             
            
