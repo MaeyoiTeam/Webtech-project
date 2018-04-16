@@ -1,12 +1,16 @@
 <?php
+    echo "<h3> Time In Class</h3>";
+
+if(isset($_SESSION["Status"])){
+if(isset($_SESSION["coursedate"])){
 $sql="SELECT current_start FROM coursedate WHERE ID='".$_SESSION['coursedate']."'";
 $result=mysqli_query($objCon,$sql);
 $row=mysqli_fetch_row($result);
   mysqli_free_result($result);
+}
 
 
 
-if(isset($_SESSION["Status"])){
  if($_SESSION['Status'] == "Teacher"){ 
             echo    "<form id = 'start' action='php/start_time.php' method='post'>";}
             echo    "<h1 class='txttime'><div id='txt'>    </div> </h1>";
@@ -16,9 +20,9 @@ if(isset($_SESSION["Status"])){
 
             echo    "<form id = 'record' action='php/record_time.php' method='post'>";}
         echo "<h3>Course:";
-    if(isset($_SESSION["coursedate"])){ echo $_SESSION['coursedate'];}
+    if(isset($_SESSION["coursedate"])){ echo $_SESSION['coursedate'];
 
-            echo    "</h3><h1 class='txttime' id='uptxt'><div id='timer_up' ></div></h1>";
+            echo    "</h3><h1 class='txttime' id='uptxt'><div id='timer_up' ></div></h1>";}
 if($_SESSION['Status'] == "Teacher"){
             echo    "<input id='testtt' name='record_time'style='display:none'>";
 
