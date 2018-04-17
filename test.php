@@ -2,20 +2,17 @@
 session_start();
 include("config.php");
 
-$sql="SELECT Fname,ID FROM studentt ORDER BY Fname";
-$x=0;
-$y=0;
-if ($result=mysqli_query($objCon,$sql))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
+$sql="SELECT studentcourse.student_ID FROM studentcourseWHERE studentcourse.course_ID='1236055'AND studentcourse.sec='21'AND studentcourse.date_date='2018-04-18'";
+
+    if ($result=mysqli_query($objCon,$sql)){
+        $num1='0';
+    while ($row1=mysqli_fetch_row($result))
     {
-      $x++;
-    printf ("%s (%s)\n",$row[0],$row[1]);
+        $num1++;
+    $strSQL2 = "INSERT INTO room ( corusedate_ID, num1,student_ID) VALUES ( '".$row[0]."', '".$num1."','".$row1[0]."')";
+		$objQuery2 = mysqli_query($objCon,$strSQL2);
     }
-  // Free result set
-  mysqli_free_result($result);
-}
-echo $x;
-mysqli_close($objCon);
+    mysqli_free_result($result);
+    }   
+
 ?>

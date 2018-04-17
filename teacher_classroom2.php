@@ -19,9 +19,7 @@ else{
 	}
 
 
-$sql="SELECT room.student_ID 
-FROM room
-WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
+$sql="SELECT room.student_ID FROM room WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
 $ID = array();
 
 $x=1;
@@ -96,25 +94,7 @@ x.style.backgroundColor = '#00FF00';
             </div>
             
             <div id="floatingMenu">
-                
-            <h1 class="txttime"><div id="txt">    </div> </h1>
-  
-            <button id="control_up" onclick="changeState_up();">START</button>
-            <form action="php/record_time.php" method="post">  
-            <h1 class="txttime" id="uptxt"><div id="timer_up" >00:00:00</div></h1>
-                    <input id="testtt" name="record_time" style="display:none">
-    
-            <button id="reset"  value="Insert" onclick="getValue();"  >Finish</button>
-            </form>
-            <button  type="button" onclick="breaktime()">Break Time</button><br>
-      
-    
-    
-            <div id="breakbar" style="display:none"><h1 class="txttime" ><div id ="timer_down" >00:00:10</div></h1>
-        
-            <button onclick="changeState_down();" id="control_down">START</button>
-        
-            </div>
+             <?php include'php/timeInClass.php';?>
             </div>
             
            
@@ -131,8 +111,8 @@ echo  "<table cellspacing=25 cellpadding=25>";
             for($i=0;$i<5;$i++){
         
         echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."<br>";
-                if(isset($ID[$temp-1])){
-                    echo $ID[$temp-1];
+                if(isset($ID[$temp])){
+                    echo $ID[$temp];
 }
                 echo "</td>";
                 $temp++;

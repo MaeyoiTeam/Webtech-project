@@ -138,10 +138,10 @@ function checkTime(i) {
         
 }
     
-            function getValue(){
-            var myElement = document.getElementById("timer_up");
-            document.getElementById("testtt").value=myElement.innerHTML;
-            document.getElementById("myForm").submit();
+            function getValue(time,space,form){
+            var myElement = document.getElementById(time);
+            document.getElementById(space).value=myElement.innerHTML;
+            document.getElementById(form).submit();
         }
         
         
@@ -166,5 +166,7 @@ function checkTime(i) {
             
         }  
         }
+
+
 
     

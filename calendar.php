@@ -61,69 +61,31 @@
              <article>
                  <div class="content">
                  <h1>Calendar</h1>
-                     <h2> <a> &lt; </a>4/2018<a> &gt; </a> </h2><br>
-                     <table class="tbl_cld">
-                     <tr class="day">
-                         <th class="weekend">S</th>    
-                         <th>M</th>
-                         <th>T</th> 
-                         <th>W</th> 
-                         <th>T</th> 
-                         <th>F</th> 
-                         <th class="weekend">S</th> 
-                     </tr>
-                         
-                         <tr class="date1">
-                         <th class="weekend">1</th> 
-                         <th>2</th>    
-                         <th>3</th>
-                         <th>4</th> 
-                         <th>5</th> 
-                         <th>6</th> 
-                         <th class="weekend">7</th> 
-                         
-                     </tr>
-                         <tr class="date2">
-                         <th class="weekend">8</th> 
-                         <th >9</th>    
-                         <th >10</th>
-                         <th >11</th> 
-                         <th >12</th> 
-                         <th>13</th> 
-                         <th class="weekend">14</th> 
-                         
-                     </tr>
-                         <tr class="date1">
-                         <th class="weekend">15</th> 
-                         <th>16</th>    
-                         <th>17</th>
-                         <th>18</th> 
-                         <th>19</th> 
-                         <th>20</th> 
-                         <th class=" weekend">21</th> 
-                          
-                     </tr>
-                         <tr class="date2">
-                         <th class="weekend">22</th>
-                         <th>23</th>    
-                         <th>24</th>
-                         <th>25</th> 
-                         <th>26</th> 
-                         <th>27</th> 
-                         <th class="weekend">29</th> 
-                         
-                     </tr>
-                         <tr class="date1">
-                         <th class="weekend">30</th> 
-                         <th></th>    
-                         <th></th>
-                         <th></th> 
-                         <th></th> 
-                         <th></th> 
-                         <th class="weekend"></th> 
-                         
-                     </tr>
-                     </table>
+                     <head>    
+<link href="aaa.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    
+<?php
+include 'calendar1.php';
+ 
+$calendar = new Calendar();
+ 
+echo $calendar->show();
+?>
+
+<button onclick="onOffbar('li-2018-04-30')">TEST</button>
+     <script>
+    function onOffbar(date){
+        var x = document.getElementById(date);
+        document.getElementById(date).style.padding="20px";
+    }
+    
+    </script>
+    
+    
+            
+</body>
                  </div>
             </article>
             

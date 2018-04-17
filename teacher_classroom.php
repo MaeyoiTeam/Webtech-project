@@ -57,50 +57,30 @@ else{
             </div>
             
             <div id="floatingMenu">
-                
-            <h1 class="txttime"><div id="txt">    </div> </h1>
-  
-            <button id="control_up" onclick="changeState_up();">START</button>
-            <form action="php/record_time.php" method="post">  
-            <h1 class="txttime" id="uptxt"><div id="timer_up" >00:00:00</div></h1>
-                    <input id="testtt" name="record_time" style="display:none">
-    
-            <button id="reset"  value="Insert" onclick="getValue();"  >Finish</button>
-            </form>
-            <button  type="button" onclick="breaktime()">Break Time</button><br>
-      
-    
-    
-            <div id="breakbar" style="display:none"><h1 class="txttime" ><div id ="timer_down" >00:00:10</div></h1>
-        
-            <button onclick="changeState_down();" id="control_down">START</button>
-        
-            </div>
+            <!--<?php include'php/timeInClass.php';?>
+//-->
             </div>
             
            
              <article >
 
                  <div class="content" >
-<form name="num" method="post" action="save_classroom.php">
+                     <form name="num" method="post" action="save_classroom.php">
                      Subject :<select name='subject'>
 <?php
-                     $subject = "SELECT course.ID FROM course";
+                     $subject = "SELECT course.ID,course.course_name FROM course";
                      if($result=mysqli_query($objCon,$subject)){
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
     {
-      echo "<option value='".$row[0]."'> ".$row[0]."</option>";
+      echo "<option value='".$row[0]."'> ".$row[1]."</option>";
     }
   // Free result set
   mysqli_free_result($result);
 }
 ?>
                      </select>
-                     Date :<select name='date'>
-                     <?php
-
-                    $date = "SELECT datedate.ID FROM datedate ";
+                     Date :<select name='date'><?php $date = "SELECT datedate.ID FROM datedate ";
                      if($result=mysqli_query($objCon,$date)){
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
@@ -113,7 +93,6 @@ else{
                      
                      ?>
                      </select>
-
                     Sec :<select name='sec'>
                      <?php
                     $sec = "SELECT sec.ID FROM sec ";
@@ -129,9 +108,7 @@ else{
                      
                      ?>
                      </select>
-
                      <br>
-        Number of students :<input name="num1" type="number"  size="3">
         <input type="submit" name="Submit" value="Save">
 
 
