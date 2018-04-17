@@ -100,7 +100,7 @@
         </td>
       </tr>
 	  <tr>
-        <td> &nbsp;Phone <font size="-1" color="gray"><I>(XXX-XXXXXXX)</I></font></td>
+        <td> &nbsp;Phone <font size="-1" color="gray"><I>(0800000000)</I></font></td>
         <td> <input name="txtPhone" type="text" id="txtPhone">
         </td>
       </tr>
