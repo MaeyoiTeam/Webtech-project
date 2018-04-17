@@ -59,26 +59,63 @@ else{
             
            
              <article >
-                  <div class="content">
-                      
-                  Welcome to User Page! <br>
-  <table border="1" style="width: 300px">
-    <tbody>
-      <tr>
-        <td width="87"> &nbsp;ID</td>
-        <td width="197"><?php echo $objResult["ID"];?>
-        </td>
-      </tr>
-      <tr>
-        <td> &nbsp;Name</td>
-        <td><?php echo $objResult["Fname"]." ".$objResult["Lname"];?></td>
-      </tr>
-    </tbody>
-  </table>
-  <br>
-  <a href="edit_profile.php">Edit</a><br>
-  <br>
+<div class="content" >
+<form name="join" method="post" action="save_join.php">
+                     Subject :<select name='subject'>
+<?php
+                     $subject = "SELECT course.ID,course.course_name FROM course";
+                     if($result=mysqli_query($objCon,$subject)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option value='".$row[0]."'> ".$row[1]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+?>
+                     </select>
+                     Date :<select name='date'><?php $date = "SELECT datedate.ID FROM datedate ";
+                     if($result=mysqli_query($objCon,$date)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option  value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+                     
+                     ?>
+                     </select>
+                    Sec :<select name='sec'>
+                     <?php
+                    $sec = "SELECT sec.ID FROM sec ";
+                     if($result=mysqli_query($objCon,$sec)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+                     
+                     ?>
+                     </select>
+                     <br>
+ <input type="submit" name="submit" value="join">
+
+
+
+
+</form>
                  </div>
+</article>
+
+
+
+	
             </article>
             
             
