@@ -82,7 +82,7 @@ else{
       </tr>
 	  <tr>
         <td> &nbsp;Birthdate</td>
-        <td><?php echo '&nbsp;',date('F j, Y',strtotime($objResult["Birthdate"]));?></td>
+        <td><?php echo '&nbsp;',$objResult["Birthdate"];?></td>
       </tr>
 	  <tr>
         <td> &nbsp;Gender</td>
