@@ -26,7 +26,7 @@ session_start();
 }
     else {
         echo ("<script LANGUAGE='JavaScript'>window.alert('Not time yet');window.location.href='student_classroom.php';</script>");
-        exit();
+        $active= 'wait';
 }
     $sqlWait = "UPDATE room SET active = '".$active."' WHERE corusedate_ID = '".$row[0]."' AND  student_ID='".$_SESSION['ID']."'";
     $result=mysqli_query($objCon,$sqlWait);

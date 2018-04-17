@@ -19,7 +19,7 @@ else{
 	}
 
 
-$sql="SELECT room.student_ID,room.active FROM room WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
+$sql="SELECT room.student_ID,room.active,studentt.Lname,studentt.Fname FROM room,studentt WHERE studentt.ID=room.student_ID AND room.corusedate_ID='".$_SESSION["coursedate"]."'";
 $ID = array();
 $x=1;
 if ($result=mysqli_query($objCon,$sql))
@@ -29,6 +29,8 @@ if ($result=mysqli_query($objCon,$sql))
     {
       $ID[$x]=$row[0];
       $active[$x] =$row[1];
+      $fname[$x] =$row[2];
+      $lname[$x]=$row[3];
       $x++;
     }
   // Free result set
@@ -51,22 +53,13 @@ if ($result=mysqli_query($objCon,$sql))
     border-width: 5px;
     align-content: center;
         border-radius: 20px;
-     font-size: 25;
+     font-size: 20px;
 	backgroundColor : #FFFFFF;    
         }
     
     
     </style>
-<script>
-function onOver1(obj){
-var x = document.getElementById(obj);
-        x.style.display = "block";
-    }
-function onOut1(obj){
-var y = document.getElementById(obj);
-     y.style.display = "none";
-    }
-</script>
+
         <script language="javascript">
 setTimeout(function(){
    window.location.reload(1);
@@ -114,13 +107,19 @@ echo  "<table cellspacing=25 cellpadding=25>";
                 else if($active[$temp]=='Late'){$color='#FF8000';}
                 else if($active[$temp]=='miss'){$color='#FF0000';}
                 else{$color='#FFFFFF'; }
-        echo "<td id='tes".$temp."' style='background-color:".$color.";' onmouseover='onOver1('t".$temp."' )' onmouseout='onOut1('t".$temp."')' >".$temp."<br>";
-        echo    "<div id='t".$temp."' style='display:block'>";
+        echo "<td id='tes".$temp."'";
+        echo "style='background-color:".$color.";'";
+        echo "onmouseover='onOver1(".$temp.")'"; 
+        echo "onmouseout='onOut1(".$temp.")' >".$temp."<br>";
+        echo $ID[$temp];
+        echo    "<div id='t".$temp."' style='display:none'>";
                 if(isset($ID[$temp])){
-                    echo $ID[$temp];
+                    
+                    echo "<br><img class='imgs' src='images/".$ID[$temp].".jpg' width='100%' height='100%'>";
+                    echo "<p>".$fname[$temp]." ".$lname[$temp]."</p>";        
+                }
             echo    "</div>";
 
-}
                 echo "</td>";
                 $temp++;
                 if($temp==$x+1)
@@ -133,6 +132,21 @@ echo  "</table>";
 
 </article>
 
+
+<script>
+    
+    
+function onOver1(obj){
+var x = document.getElementById("t"+obj);
+        x.style.display = "block";
+    }
+function onOut1(obj){
+var y = document.getElementById("t"+obj);
+     y.style.display = "none";
+    }
+    
+    
+</script>
             
             <aside >
                 <div id=asidemenu>

@@ -10,13 +10,13 @@ $row=mysqli_fetch_row($result);
 }
 
 
-
+    echo    "<h1 class='txttime'><div id='txt'>    </div> </h1>";
  if($_SESSION['Status'] == "Teacher"){ 
             echo    "<form id = 'start' action='php/start_time.php' method='post'>";}
-            echo    "<h1 class='txttime'><div id='txt'>    </div> </h1>";
+            
 if(isset($_SESSION["coursedate"])){
  if($_SESSION['Status'] == "Teacher"){ 
-            echo    "<button id='control_up' value='Insert' onclick='getValue('txt','startspace','start');'>START</button>";
+            echo    "<button id='control_up' value='Insert' onclick='getValue('txt','start');'>START</button>";
             echo    "</form>";
 
             echo    "<form id = 'record' action='php/record_time.php' method='post'>";}
@@ -27,17 +27,15 @@ if(isset($_SESSION["coursedate"])){
 if($_SESSION['Status'] == "Teacher"){
             echo    "<input id='testtt' name='record_time'style='display:none'>";
 
-            echo    "<button id='reset'  value='Insert' onclick='getValue('timer_up','testt','record');'>Finish</button>";
+            echo    "<button id='reset'  value='Insert' onclick='getValue('timer_up','record');'>Finish</button>";
             echo    "</form>";
-
-            echo    "<button  type='button' onclick='breaktime()'>Break Time</button><br>";
+            echo    "<form id = 'breaktime' action='php/break_time.php' method='post'>";
+            echo    "<button id='control_up' value='Insert' onclick='getValue('timer_down','breaktime');'>Breaktime</button>";
+            echo    "<h3><input type='number' name='break_time'style=' width: 50%; text-align: right;'>minute</h3>";
+            echo    "</form>";
   }    
-    
-    
-            echo    "<div id='breakbar' style='display:none'><h1 class='txttime' ><div id ='timer_down' >00:00:10</div></h1>";
-   if($_SESSION['Status'] == "Teacher"){     
-            echo    "<button onclick='changeState_down();' id='control_down'>START</button>";
-   }
+            
+             echo    "<div id='breakbar'><h1><div id ='timer_down' ></div></h1>";
             echo    "</div>";
 }
 }
@@ -45,7 +43,7 @@ if($_SESSION['Status'] == "Teacher"){
 
 <script type="text/javascript">
 active = '<?php echo $row[1];?>';
-if(active =="on"||active=="wait"){
+if(active =="on"){
 setInterval(function()
 {
 
@@ -53,6 +51,16 @@ var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET","php/time.php",false);
     xmlhttp.send(null);
     document.getElementById("timer_up").innerHTML=xmlhttp.responseText;
+
+},1000);}
+else if(active=="break"){
+setInterval(function()
+{
+
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET","php/time.php",false);
+    xmlhttp.send(null);
+    document.getElementById("timer_down").innerHTML=xmlhttp.responseText;
 
 },1000);}
 </script>

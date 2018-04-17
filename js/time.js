@@ -138,34 +138,13 @@ function checkTime(i) {
         
 }
     
-            function getValue(time,space,form){
+            function getValue(time,form){
             var myElement = document.getElementById(time);
-            document.getElementById(space).value=myElement.innerHTML;
             document.getElementById(form).submit();
         }
         
         
-        function breaktime() {
-            
-            
-    var x = document.getElementById("breakbar");
-    if (x.style.display !== "none"&&activeup==false) {
-        x.style.display = "none";
-        changeState_up();
 
-    } else if(x.style.display === "none"&&activeup==true){
-        changeState_up();
-        x.style.display = "block";
-    }
-      else if(x.style.display !== "none"&&activeup==true){
-        x.style.display = "none";
-          document.getElementById("control_up").innerHTML="PAUSE";
-      }      
-        else{
-            document.getElementById("control_up").innerHTML="START";
-            
-        }  
-        }
 
 
 
