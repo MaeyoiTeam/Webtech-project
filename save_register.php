@@ -3,19 +3,19 @@
 	
 	if(trim($_POST["txtUsername"]) == "")
 	{
-		echo "Please input Username!";
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Please input username!');window.location.href='register.php';</script>");
 		exit();	
 	}
 	
 	if(trim($_POST["txtPassword"]) == "")
 	{
-		echo "Please input Password!";
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Please input password!');window.location.href='register.php';</script>");
 		exit();	
 	}	
 		
 	if($_POST["txtPassword"] != $_POST["txtConPassword"])
 	{
-		echo "Password not Match!";
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Password not match!');window.location.href='register.php';</script>");
 		exit();
 	}
 	
@@ -25,28 +25,29 @@
 	$objResult = mysqli_fetch_array($objQuery);
 	if($objResult)
 	{
-			echo "Username already exists!";
+			echo ("<script LANGUAGE='JavaScript'>window.alert('Username already exist!');window.location.href='register.php';</script>");
 	}
 	else
 	{	
 		
-		$strSQL = "INSERT INTO member (ID,Username,Password,Active,Status) VALUES ('".$_POST["txtID"]."','".$_POST["txtUsername"]."', 
-		'".$_POST["txtPassword"]."','".$_POST["txtName"]."','".$_POST["ddlStatus"]."')";
+		$strSQL = "INSERT INTO member (ID,Username,Password,Status) VALUES ('".$_POST["txtID"]."','".$_POST["txtUsername"]."', 
+		'".$_POST["txtPassword"]."','".$_POST["ddlStatus"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
 	}	
 	if($_POST["ddlStatus"]=="Student")
 	{
 		$strSQL = "INSERT INTO studentt (ID) VALUES ('".$_POST["txtID"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Register Completed!');window.location.href='login.php';</script>");
 	}
 	else
 	{
 		$strSQL = "INSERT INTO teachert (ID) VALUES ('".$_POST["txtID"]."')";
 		$objQuery = mysqli_query($objCon,$strSQL);
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Register Completed!');window.location.href='login.php';</script>");
 	}
-		echo "Register Completed!<br>";		
-	
-		echo "<br> Go to <a href='login.php'>Login page</a>";
+		
+
 		
 	
 
