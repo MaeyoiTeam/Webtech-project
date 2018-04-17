@@ -1,7 +1,9 @@
 *{margin:0;
-    
+    font-family: 'Muli', sans-serif;
     
 }
+
+
 
 
 #container{
@@ -75,6 +77,10 @@ footer{
     height: 70px;
     clear: both;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+    
+}
+footer span{
+    font-size: 24px;
 }
 
 #floatingMenu{

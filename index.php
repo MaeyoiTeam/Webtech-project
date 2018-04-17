@@ -41,21 +41,15 @@ session_start();
            
              <article >
                   <div class="content">
-                      <h1 id="projechh " onmouseout="onOut(id)" onmouseover="onOver(id)">HELLO project!!!</h1>
-                 <h1 id="projec " onmouseout="onOut(id)" onmouseover="onOver(id)">Webtech project</h1>
-                  <h1 id="test7" onmouseout="onOut(id)" onmouseover="onOver(id)">KANUTSANUN NITHIPANICH 59010164</h1>
-                 
-                 <h1 id="test1" onmouseout="onOut(id)" onmouseover="onOver(id)">JAKKAPAT BOONROJ 59010187</h1>
-                       <h1 id="test3" onmouseout="onOut(id)" onmouseover="onOver(id)">JIRAPAT PITAKSINAKORN 59010205</h1>
-                 <h1 id="test2" onmouseout="onOut(id)" onmouseover="onOver(id)">CHALERMWUT LERDWUTWARAKITTI 59010249 <h1>
-                
-                 
-                 <h1 id="test6" onmouseout="onOut(id)" onmouseover="onOver(id)">NAPHAT PECHSRIJUN 59010386</h1>
-                
-                     <h1 id="test4" onmouseout="onOut(id)" onmouseover="onOver(id)">NONTAKON CHAROENCHEEWAKUL 59010679</h1>
-                 <h1 id="test5" onmouseout="onOut(id)" onmouseover="onOver(id)">NANTAPONG SILSRIKUL 59010719</h1>
-                     <h1 id="test" onmouseout="onOut(id)" onmouseover="onOver(id)">NITHI SEMAMUANG 59010736</h1>
-                
+
+
+                      <h1 >HELLO project!!!</h1>
+                 <h1 >Webtech project</h1>
+                      <h3 >This is relationship of our website</h3>
+                      <img src="images/plan.png" width="100%">
+
+
+
                  </div>
             </article>
             
@@ -71,7 +65,7 @@ session_start();
         
         <footer>
             
-                <h1>Footer</h1>
+                <?php include 'php/footer.php';?>
             </footer>
 
         

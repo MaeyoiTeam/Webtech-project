@@ -23,7 +23,7 @@ $strSQL = "UPDATE coursedate SET current_finish = '".$current_time."',duration =
     unset($_SESSION['coursedate']);
 }
 
-header("Location: {$_SERVER['HTTP_REFERER']}");
+header("Location: ../index.php");
 
    
 ?>

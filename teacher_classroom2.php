@@ -115,7 +115,7 @@ echo  "<table cellspacing=25 cellpadding=25>";
         echo    "<div id='t".$temp."' style='display:none'>";
                 if(isset($ID[$temp])){
                     
-                    echo "<br><img class='imgs' src='images/".$ID[$temp].".jpg' width='100%' height='100%'>";
+                    echo "<br><img class='imgs' src='images/".$ID[$temp].".jpg' width='100%''>";
                     echo "<p>".$fname[$temp]." ".$lname[$temp]."</p>";        
                 }
             echo    "</div>";

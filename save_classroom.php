@@ -12,7 +12,7 @@ session_start();
     $class ="SELECT coursedate.ID FROM coursedate WHERE coursedate.course_ID = '".$subject."' AND coursedate.sec = '".$sec."' AND coursedate.date_date = '".$date."' ";
     $result=mysqli_query($objCon,$class);
     $row=mysqli_fetch_row($result);
-    
+    if(isset($row[0])){
 
     $sqlWait = "UPDATE coursedate SET active = 'wait' WHERE ID = '".$row[0]."' ";;
     $result=mysqli_query($objCon,$sqlWait);
@@ -33,8 +33,11 @@ session_start();
 
         $_SESSION['num1']=$num1;
         $_SESSION['coursedate']=$row[0];
-		 echo ("<script LANGUAGE='JavaScript'>window.alert('Number of Student Complete!".$num1.$subject.$date.$sec."');window.location.href='teacher_classroom2.php';</script>");
-
+		 echo ("<script LANGUAGE='JavaScript'>window.alert('Create Class Success');window.location.href='teacher_classroom2.php';</script>)");
+    }
+    else{
+        echo ("<script LANGUAGE='JavaScript'>window.alert('404 Not found');window.location.href='teacher_classroom.php';</script>");
+}
 
 	mysqli_close($objCon);
 ?>

@@ -5,15 +5,21 @@
 if(isset($_SESSION['ID'])){
 		
 
-	if($_SESSION['Status'] != "Teacher")
+	if($_SESSION['Status'] != "Student")
 	{
-		echo "This page for Teacher only!";
+		echo "This page for Student only!";
 		exit();
 	}
 }
 else{
 	header("location:index.php");
-	}?>
+	}
+	
+
+	$strSQL = "SELECT * FROM studentt WHERE ID = '".$_SESSION['ID']."' ";
+	$objQuery = mysqli_query($objCon,$strSQL);
+	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,19 +31,10 @@ else{
         <link rel="stylesheet" href="css/menu.css" type="text/css" />
         <script type="text/javascript" src="js/mouse.js">  </script>
         <script type="text/javascript" src="js/time.js">  </script>
-    <style>       
-    td{border-style: solid;
-    border-width: 5px;
-    align-content: center;
-        border-radius: 20px;
-     font-size: 25;    
-        }
-    
-    
-    </style>
     </head>
     
     <body onload="startTime()">
+        
         <nav>
             <div id="tabs">
                 <?php include 'php/menutop.php';?>
@@ -56,17 +53,16 @@ else{
             </div>
             
             <div id="floatingMenu">
-            <!--<?php include'php/timeInClass.php';?>
-//-->
+         <?php include'php/timeInClass.php';?>
             </div>
             
            
              <article >
+                  <div class="content">
+                      
+                  Welcome to Student Swap Class! <br>
 
-                 <div class="content" >
-
-
-                     <form name="num" method="post" action="save_classroom.php">
+                               <form name="num" method="post" action="save_swap.php">
                      Subject :<select name='subject'>
 <?php
                      $subject = "SELECT course.ID,course.course_name FROM course";
@@ -81,23 +77,19 @@ else{
 }
 ?>
                      </select>
-
-                     Date :<select name='date'>
-                         <?php $date = "SELECT datedate.ID FROM datedate ";
+                     Date :<select name='date'><?php $date = "SELECT datedate.ID FROM datedate  ";
                      if($result=mysqli_query($objCon,$date)){
-                    // Fetch one and one row
-                    while ($row=mysqli_fetch_row($result))
-                    {
-                    echo "<option  value='".$row[0]."'> ".$row[0]."</option>";
-                }
-        // Free result set
-                mysqli_free_result($result);
-                     }
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option  value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
                      
                      ?>
                      </select>
-
-
                     Sec :<select name='sec'>
                      <?php
                     $sec = "SELECT sec.ID FROM sec ";
@@ -114,7 +106,36 @@ else{
                      ?>
                      </select>
                      <br>
-
+                                   <p>Swap Class to..</p>
+Date :<select name='date2'><?php $date2 = "SELECT datedate.ID FROM datedate  ";
+                     if($result=mysqli_query($objCon,$date2)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option  value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+                     
+                     ?>
+                     </select>
+                    Sec :<select name='sec2'>
+                     <?php
+                    $sec2 = "SELECT sec.ID FROM sec ";
+                     if($result=mysqli_query($objCon,$sec2)){
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<option value='".$row[0]."'> ".$row[0]."</option>";
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+                     
+                     ?>
+                     </select>
+                     <br>
 
         <input type="submit" name="Submit" value="Save">
 
@@ -124,15 +145,16 @@ else{
 </form>
 
 
-
-
+  <a href="edit_profile.php">Edit</a><br>
+  <br>
                  </div>
-</article>
+            </article>
             
             
             <aside >
                 <div id=asidemenu>
                 <?php include 'php/menuright.php';?>
+                    
                 </div>
            
             </aside>
