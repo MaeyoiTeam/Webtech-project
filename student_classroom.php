@@ -42,8 +42,7 @@ else{
             </nav>
         
         <header class="header">
-            <br>
-            <h1>Header</h1>
+            <?php include 'php/head.php';?>
         </header>
          
         <div id="container">
