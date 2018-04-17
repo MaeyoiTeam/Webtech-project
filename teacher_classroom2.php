@@ -58,19 +58,14 @@ if ($result=mysqli_query($objCon,$sql))
     
     </style>
 <script>
-function clickme(obj){
-var x=document.getElementById(obj);
-if(x.style.backgroundColor=='rgb(0, 255, 0)'){
-x.style.backgroundColor = '#FF8000';
-}else if(x.style.backgroundColor=='rgb(255, 128, 0)'){
-x.style.backgroundColor = '#FF0000';
-}else if(x.style.backgroundColor=='rgb(255, 0, 0)'){
-x.style.backgroundColor = '#FFFFFF';
-}else {
-x.style.backgroundColor = '#00FF00';
-}
-}
-
+function onOver1(obj){
+var x = document.getElementById(obj);
+        x.style.display = "block";
+    }
+function onOut1(obj){
+var y = document.getElementById(obj);
+     y.style.display = "none";
+    }
 </script>
         <script language="javascript">
 setTimeout(function(){
@@ -120,9 +115,12 @@ echo  "<table cellspacing=25 cellpadding=25>";
                 else if($active[$temp]=='Late'){$color='#FF8000';}
                 else if($active[$temp]=='miss'){$color='#FF0000';}
                 else{$color='#FFFFFF'; }
-        echo "<td id='tes".$temp."' style='background-color:".$color.";'>".$temp."<br>";
+        echo "<td id='tes".$temp."' style='background-color:".$color.";' onmouseover='onOver1('t".$temp."' )' onmouseout='onOut1('t".$temp."')' >".$temp."<br>";
+        echo    "<div id='t".$temp."' style='display:block'>";
                 if(isset($ID[$temp])){
                     echo $ID[$temp];
+            echo    "</div>";
+
 }
                 echo "</td>";
                 $temp++;
