@@ -19,9 +19,8 @@ else{
 	}
 
 
-$sql="SELECT room.student_ID FROM room WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
+$sql="SELECT room.student_ID,room.active FROM room WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
 $ID = array();
-
 $x=1;
 if ($result=mysqli_query($objCon,$sql))
   {
@@ -29,6 +28,7 @@ if ($result=mysqli_query($objCon,$sql))
   while ($row=mysqli_fetch_row($result))
     {
       $ID[$x]=$row[0];
+      $active[$x] =$row[1];
       $x++;
     }
   // Free result set
@@ -72,6 +72,11 @@ x.style.backgroundColor = '#00FF00';
 }
 
 </script>
+        <script language="javascript">
+setTimeout(function(){
+   window.location.reload(1);
+}, 10000);
+</script>
     </head>
     
     <body onload="startTime()">
@@ -110,7 +115,12 @@ echo  "<table cellspacing=25 cellpadding=25>";
 
             for($i=0;$i<5;$i++){
         
-        echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."<br>";
+
+                if($active[$temp]=='present'){$color='#00FF00';}
+                else if($active[$temp]=='Late'){$color='#FF8000';}
+                else if($active[$temp]=='miss'){$color='#FF0000';}
+                else{$color='#FFFFFF'; }
+        echo "<td id='tes".$temp."' style='background-color:".$color.";'>".$temp."<br>";
                 if(isset($ID[$temp])){
                     echo $ID[$temp];
 }
@@ -134,7 +144,7 @@ echo  "</table>";
            
             </aside>
        
-        </div>
+        </div> 
         
         <footer>
             

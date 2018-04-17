@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="theme1.css">
+        <style>
+            .imgschool{
+                position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    height: 500px;}
+        </style>
+    </head>
+    <body class="mid">
+        <h1>การศึกษา</h1>
+        <ul>
+            <li><p id="school1" onmouseover="onOver(id)" onmouseout="onOut(id)" >ระดับชั้นอนุบาล : โรงเรียนถนอมพิศวิทยา</p></li>
+        <li><p id="school2" onmouseover="onOver(id)" onmouseout="onOut(id)" >ระดับชั้นประถม : โรงเรียนถนอมพิศวิทยา</p></li>
+        <li><p id="school3" onmouseover="onOver(id)" onmouseout="onOut(id)")>ระดับชั้นมัธยมตอนต้น : โรงเรียนพิบูลอุปถัมภ์</p></li>
+        <li><p id="school4" onmouseover="onOver(id)" onmouseout="onOut(id)">ระดับชั้นมัธยมตอนปลาย : โรงเรียนบดินทรเดชา(สิงห์ สิงหเสนี)</p></li>
+         <li><p id="kmitl" onmouseover="onOver(id)" onmouseout="onOut(id)">ระดับอุดมศึกษา : สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+             <ul>
+                 <li><p id="ite" onmouseover="onOver(id)" onmouseout="onOut(id)" >คณะวิศวกรรมศาตร์ ภาควิศวกรรมสารสนเทศ</p>
+                 </li>
+             </ul>
+            </li>    
+            
+        </ul>
+        <img id="ite" class="imgite"/><img id="school" class="imgschool"/>
+<script>
+    function onOver(obj){
+	   document.getElementById(obj).style.backgroundColor="#1f2023";
+       document.getElementById(obj).style.color="Darkgray"; 
+        var srcschool;
+          switch(obj){  
+            case "school1": srcschool="../photo/logo/school1.png"; break;
+            case "school2": srcschool="../photo/logo/school1.png"; break;
+            case "school3": srcschool="../photo/logo/school2.jpg"; break;
+            case "school4": srcschool="../photo/logo/school3.png"; break;
+            case "kmitl": srcschool="../photo/logo/kmitl.png"; break;
+            case "ite": srcschool="../photo/logo/ite.png"; break;
+            }
+        document.getElementById("school").src=srcschool;   
+    }
+    function onOut(obj){
+	   document.getElementById(obj).style.backgroundColor="#222427";
+    document.getElementById(obj).style.color= "white";
+        document.getElementById("school").src="";
+        document.getElementById("ite").src="";
+    }
+    
+</script>
+    </body>
+    
+</html>
