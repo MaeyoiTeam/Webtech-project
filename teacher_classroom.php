@@ -57,22 +57,23 @@ else{
             </div>
             
             <div id="floatingMenu">
-            <?php include'php/timeInClass.php';?>
+            <!--<?php include'php/timeInClass.php';?>
+//-->
             </div>
             
            
              <article >
 
                  <div class="content" >
-<form name="num" method="post" action="save_classroom.php">
+                     <form name="num" method="post" action="save_classroom.php">
                      Subject :<select name='subject'>
 <?php
-                     $subject = "SELECT course.ID FROM course";
+                     $subject = "SELECT course.ID,course.course_name FROM course";
                      if($result=mysqli_query($objCon,$subject)){
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
     {
-      echo "<option value='".$row[0]."'> ".$row[0]."</option>";
+      echo "<option value='".$row[0]."'> ".$row[1]."</option>";
     }
   // Free result set
   mysqli_free_result($result);

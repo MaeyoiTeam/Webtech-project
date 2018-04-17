@@ -1,19 +1,8 @@
 <?php
 session_start();
-
+include("config.php");
+$_SESSION["coursedate"]='180001';
+echo $_SESSION["coursedate"];
+$sqlWait = "UPDATE coursedate SET active = 'wait' WHERE ID = '".$_SESSION["coursedate"]."' ";;
+$result=mysqli_query($objCon,$sqlWait);
 ?>
-
-<div id="timer_up"></div>
-
-<script type="text/javascript">
-setInterval(function()
-{
-
-var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET","php/time.php",false);
-    xmlhttp.send(null);
-    document.getElementById("timer_up").innerHTML=xmlhttp.responseText;
-
-},1000);
-
-</script>

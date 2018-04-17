@@ -16,11 +16,12 @@ $time2=strtotime($current_time);
 $record=$time2-$time1;
 
 if(isset($_SESSION['coursedate'])){
-$strSQL = "UPDATE coursedate SET current_finish = '".$current_time."',duration = '".$record."',Active = 'off' WHERE ID = '".$_SESSION["coursedate"]."' ";
+$strSQL = "UPDATE coursedate SET current_finish = '".$current_time."',duration = '".$record."',active = 'off' WHERE ID = '".$_SESSION["coursedate"]."' ";
         $objQuery = mysqli_query($objCon,$strSQL);
 
 }
+
 header("Location: {$_SERVER['HTTP_REFERER']}");
-z
+
    
 ?>

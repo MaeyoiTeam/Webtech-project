@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2018 at 01:13 AM
+-- Generation Time: Apr 17, 2018 at 02:34 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -57,7 +57,7 @@ CREATE TABLE `coursedate` (
   `sec` int(11) DEFAULT NULL,
   `date_date` date DEFAULT NULL,
   `daytime_ID` int(11) DEFAULT NULL,
-  `Active` enum('on','off') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `active` enum('on','off','wait') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
   `current_start` time NOT NULL,
   `current_finish` time NOT NULL,
   `duration` time NOT NULL
@@ -67,16 +67,16 @@ CREATE TABLE `coursedate` (
 -- Dumping data for table `coursedate`
 --
 
-INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`, `Active`, `current_start`, `current_finish`, `duration`) VALUES
-(180001, 1236055, 21, '2018-04-18', 1, 'off', '00:00:00', '00:00:00', '00:00:02'),
-(180002, 1236054, 21, '2018-04-18', 2, 'off', '00:00:00', '00:00:00', '00:00:05'),
-(180003, 1236052, 21, '2018-04-19', 1, 'off', '06:11:48', '06:11:52', '00:00:04'),
+INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`, `active`, `current_start`, `current_finish`, `duration`) VALUES
+(180001, 1236055, 21, '2018-04-18', 1, 'on', '07:16:58', '06:53:43', '00:00:04'),
+(180002, 1236054, 21, '2018-04-18', 2, 'on', '07:09:23', '00:00:00', '00:00:05'),
+(180003, 1236052, 21, '2018-04-19', 1, 'off', '07:34:05', '07:34:09', '00:00:04'),
 (180004, 1236053, 21, '2018-04-19', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
 (180005, 1236054, 22, '2018-04-18', 1, 'off', '00:00:00', '00:00:00', '00:00:00'),
 (180006, 1236052, 22, '2018-04-18', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
 (180007, 1236053, 22, '2018-04-18', 3, 'off', '00:00:00', '00:00:00', '00:00:00'),
 (180008, 1236055, 22, '2018-04-19', 1, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180009, 1236055, 21, '2018-04-25', 1, 'off', '00:00:00', '00:00:00', '00:00:00'),
+(180009, 1236055, 21, '2018-04-25', 1, 'on', '07:10:51', '00:00:00', '00:00:00'),
 (180010, 1236054, 21, '2018-04-25', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
 (180011, 1236052, 21, '2018-04-26', 1, 'off', '00:00:00', '00:00:00', '00:00:10'),
 (180012, 1236053, 21, '2018-04-26', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
@@ -164,87 +164,6 @@ CREATE TABLE `room` (
   `active` enum('wait','present','Late','miss') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'wait',
   `student_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `room`
---
-
-INSERT INTO `room` (`ID`, `corusedate_ID`, `num1`, `active`, `student_ID`) VALUES
-(643, 180002, 1, 'wait', NULL),
-(644, 180002, 2, 'wait', NULL),
-(645, 180002, 3, 'wait', NULL),
-(646, 180002, 4, 'wait', NULL),
-(647, 180002, 5, 'wait', NULL),
-(648, 180002, 6, 'wait', NULL),
-(649, 180002, 7, 'wait', NULL),
-(650, 180002, 8, 'wait', NULL),
-(651, 180002, 9, 'wait', NULL),
-(652, 180002, 10, 'wait', NULL),
-(653, 180002, 11, 'wait', NULL),
-(654, 180002, 12, 'wait', NULL),
-(655, 180002, 13, 'wait', NULL),
-(656, 180002, 14, 'wait', NULL),
-(657, 180002, 15, 'wait', NULL),
-(658, 180002, 16, 'wait', NULL),
-(659, 180002, 17, 'wait', NULL),
-(660, 180002, 18, 'wait', NULL),
-(661, 180002, 19, 'wait', NULL),
-(662, 180002, 20, 'wait', NULL),
-(663, 180002, 21, 'wait', NULL),
-(664, 180002, 22, 'wait', NULL),
-(665, 180002, 23, 'wait', NULL),
-(666, 180002, 24, 'wait', NULL),
-(667, 180002, 25, 'wait', NULL),
-(668, 180002, 26, 'wait', NULL),
-(669, 180002, 27, 'wait', NULL),
-(670, 180002, 28, 'wait', NULL),
-(671, 180002, 29, 'wait', NULL),
-(672, 180002, 30, 'wait', NULL),
-(673, 180011, 1, 'wait', NULL),
-(674, 180011, 2, 'wait', NULL),
-(675, 180011, 3, 'wait', NULL),
-(676, 180011, 4, 'wait', NULL),
-(677, 180011, 5, 'wait', NULL),
-(678, 180011, 6, 'wait', NULL),
-(679, 180011, 7, 'wait', NULL),
-(680, 180011, 8, 'wait', NULL),
-(681, 180011, 9, 'wait', NULL),
-(682, 180011, 10, 'wait', NULL),
-(683, 180011, 11, 'wait', NULL),
-(684, 180011, 12, 'wait', NULL),
-(685, 180011, 13, 'wait', NULL),
-(686, 180011, 14, 'wait', NULL),
-(687, 180011, 15, 'wait', NULL),
-(688, 180003, 1, 'wait', NULL),
-(689, 180003, 2, 'wait', NULL),
-(690, 180003, 3, 'wait', NULL),
-(691, 180003, 4, 'wait', NULL),
-(692, 180003, 5, 'wait', NULL),
-(693, 180003, 6, 'wait', NULL),
-(694, 180003, 7, 'wait', NULL),
-(695, 180003, 8, 'wait', NULL),
-(696, 180003, 9, 'wait', NULL),
-(697, 180003, 10, 'wait', NULL),
-(698, 180003, 11, 'wait', NULL),
-(699, 180003, 12, 'wait', NULL),
-(700, 180003, 13, 'wait', NULL),
-(701, 180003, 14, 'wait', NULL),
-(702, 180003, 15, 'wait', NULL),
-(703, 180003, 16, 'wait', NULL),
-(704, 180003, 17, 'wait', NULL),
-(705, 180003, 18, 'wait', NULL),
-(706, 180003, 19, 'wait', NULL),
-(707, 180003, 20, 'wait', NULL),
-(708, 180003, 21, 'wait', NULL),
-(709, 180003, 22, 'wait', NULL),
-(710, 180003, 23, 'wait', NULL),
-(711, 180003, 24, 'wait', NULL),
-(712, 180003, 25, 'wait', NULL),
-(713, 180003, 26, 'wait', NULL),
-(714, 180003, 27, 'wait', NULL),
-(715, 180003, 28, 'wait', NULL),
-(716, 180003, 29, 'wait', NULL),
-(717, 180003, 30, 'wait', NULL);
 
 -- --------------------------------------------------------
 

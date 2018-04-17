@@ -3,7 +3,7 @@
 
 if(isset($_SESSION["Status"])){
 if(isset($_SESSION["coursedate"])){
-$sql="SELECT current_start FROM coursedate WHERE ID='".$_SESSION['coursedate']."'";
+$sql="SELECT current_start,active FROM coursedate WHERE ID='".$_SESSION['coursedate']."'";
 $result=mysqli_query($objCon,$sql);
 $row=mysqli_fetch_row($result);
   mysqli_free_result($result);
@@ -14,6 +14,7 @@ $row=mysqli_fetch_row($result);
  if($_SESSION['Status'] == "Teacher"){ 
             echo    "<form id = 'start' action='php/start_time.php' method='post'>";}
             echo    "<h1 class='txttime'><div id='txt'>    </div> </h1>";
+if(isset($_SESSION["coursedate"])){
  if($_SESSION['Status'] == "Teacher"){ 
             echo    "<button id='control_up' value='Insert' onclick='getValue('txt','startspace','start');'>START</button>";
             echo    "</form>";
@@ -39,9 +40,12 @@ if($_SESSION['Status'] == "Teacher"){
    }
             echo    "</div>";
 }
+}
 ?>
 
 <script type="text/javascript">
+active = '<?php echo $row[1];?>';
+if(active =="on"||active=="wait"){
 setInterval(function()
 {
 
@@ -50,6 +54,5 @@ var xmlhttp = new XMLHttpRequest();
     xmlhttp.send(null);
     document.getElementById("timer_up").innerHTML=xmlhttp.responseText;
 
-},1000);
-
+},1000);}
 </script>

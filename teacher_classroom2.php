@@ -19,9 +19,7 @@ else{
 	}
 
 
-$sql="SELECT room.student_ID 
-FROM room
-WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
+$sql="SELECT room.student_ID FROM room WHERE room.corusedate_ID='".$_SESSION["coursedate"]."'";
 $ID = array();
 
 $x=1;
