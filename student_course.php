@@ -19,6 +19,9 @@ else{
 	$strSQL = "SELECT * FROM studentt WHERE ID = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objCon,$strSQL);
 	$objResult = mysqli_fetch_array($objQuery,MYSQLI_ASSOC);
+    
+   
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,17 +64,50 @@ else{
                   <div class="content">
                       
                   Welcome to User Page! <br>
-  <table border="1" style="width: 300px">
+   <table border="1" style="width: 350px">
     <tbody>
       <tr>
         <td width="87"> &nbsp;ID</td>
-        <td width="197"><?php echo $objResult["ID"];?>
+        <td width="220"><?php echo '&nbsp;',$objResult["ID"];?>
         </td>
       </tr>
       <tr>
         <td> &nbsp;Name</td>
-        <td><?php echo $objResult["Fname"]." ".$objResult["Lname"];?></td>
+        <td><?php echo '&nbsp;',$objResult["Fname"]." ".$objResult["Lname"];?></td>
       </tr>
+         </tbody>
+     
+  </table>
+                      
+                      <table border="1" style="width: 350px">
+    <tbody>
+        <tr>
+        <td> &nbsp;Course ID</td>
+        <td> &nbsp;Course Name</td>
+      </tr>
+        <br>
+        
+	  <tr>
+        <td>1236052</td>
+        <td>Telecom</td>
+      </tr>
+	  <tr>
+        <td>1236053</td>
+         <td>Coding</td>
+      </tr>
+	  <tr>
+         <td>1236054</td>
+         <td>Database</td>
+      </tr>
+	  <tr>
+         <td>1236055</td>
+         <td>Webtech</td>
+      </tr>
+        
+        
+       
+
+	 
     </tbody>
   </table>
   <br>

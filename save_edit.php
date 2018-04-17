@@ -18,8 +18,7 @@
 				WHERE ID = '".$_SESSION['ID']."' ";
 		$objQuery = mysqli_query($objCon,$strSQL);
 		
-		echo "Edit Completed!<br>";	
-		echo "<br> Go to <a href='student_page.php'>Student page</a>";
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Edit Completed!');window.location.href='student_page.php';</script>");
 	}	
 
 
