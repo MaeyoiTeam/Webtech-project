@@ -2,15 +2,11 @@
 session_start();
 
 	include("config.php");
-	$num1=$_POST['num1'];
 	$subject=$_POST['subject'];
 	$date=$_POST['date'];
 	$sec=$_POST['sec'];
 
-	if(trim($num1) == ""){
-		echo "Please input Number of students!";
-		exit();	
-	}
+
 
 
     $class ="SELECT coursedate.ID FROM coursedate WHERE coursedate.course_ID = '".$subject."' AND coursedate.sec = '".$sec."' AND coursedate.date_date = '".$date."' ";
@@ -22,19 +18,22 @@ session_start();
     $result=mysqli_query($objCon,$sqlWait);
 
 
+    $sql="SELECT studentcourse.student_ID FROM studentcourse WHERE studentcourse.course_ID='".$subject."' AND studentcourse.sec= '".$sec."' AND studentcourse.date_date= '".$date."' ";
 
-
-
-
-	for($i=1;$i<=$num1;$i++){		
-	$strSQL2 = "INSERT INTO room ( corusedate_ID, num1) VALUES ( '".$row[0]."', '".$i."'";
+    if ($result=mysqli_query($objCon,$sql)){
+        $num1=0;
+    while ($row1=mysqli_fetch_row($result))
+    {
+        $num1++;
+    $strSQL2 = "INSERT INTO room ( corusedate_ID, num1,student_ID) VALUES ( '".$row[0]."', '".$num1."','".$row1[0]."')";
 		$objQuery2 = mysqli_query($objCon,$strSQL2);
-    } 
+    }
+    mysqli_free_result($result);
+    }   
+
+        $_SESSION['num1']=$num1;
 		 echo ("<script LANGUAGE='JavaScript'>window.alert('Number of Student Complete!".$num1.$subject.$date.$sec."');window.location.href='teacher_classroom2.php';</script>");
-        if(row[0]!=''&&num1!=''){
-		 $_SESSION["num1"]=$num1;
-         $_SESSION["coursedate"]=$row[0];
-        }
+
 
 	mysqli_close($objCon);
 ?>

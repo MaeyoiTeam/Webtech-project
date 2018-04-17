@@ -200,23 +200,3 @@ $month = date("m", time());
      
 }
 ?>
-
-<html>
-<head>
-    
-    
-    
-    
-    </head>
-
-<body>
-   
-    
-    
-    
-    
-    </body>
-
-
-
-</html>

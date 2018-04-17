@@ -111,8 +111,8 @@ echo  "<table cellspacing=25 cellpadding=25>";
             for($i=0;$i<5;$i++){
         
         echo "<td id='tes".$temp."' onclick='clickme(id)'>".$temp."<br>";
-                if(isset($ID[$temp-1])){
-                    echo $ID[$temp-1];
+                if(isset($ID[$temp])){
+                    echo $ID[$temp];
 }
                 echo "</td>";
                 $temp++;
