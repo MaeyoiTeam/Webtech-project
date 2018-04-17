@@ -80,10 +80,7 @@ else{
 }
 ?>
                      </select>
-                     Date :<select name='date'>
-                     <?php
-
-                    $date = "SELECT datedate.ID FROM datedate ";
+                     Date :<select name='date'><?php $date = "SELECT datedate.ID FROM datedate ";
                      if($result=mysqli_query($objCon,$date)){
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
@@ -96,7 +93,6 @@ else{
                      
                      ?>
                      </select>
-
                     Sec :<select name='sec'>
                      <?php
                     $sec = "SELECT sec.ID FROM sec ";
@@ -112,9 +108,7 @@ else{
                      
                      ?>
                      </select>
-
                      <br>
-        Number of students :<input name="num1" type="number"  size="3">
         <input type="submit" name="Submit" value="Save">
 
 

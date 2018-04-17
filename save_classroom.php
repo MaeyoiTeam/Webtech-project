@@ -32,6 +32,7 @@ session_start();
     }   
 
         $_SESSION['num1']=$num1;
+        $_SESSION['coursedate']=$row[0];
 		 echo ("<script LANGUAGE='JavaScript'>window.alert('Number of Student Complete!".$num1.$subject.$date.$sec."');window.location.href='teacher_classroom2.php';</script>");
 
 
