@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 	include("config.php");
 	$subject=$_POST['subject'];
