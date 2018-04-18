@@ -1,6 +1,6 @@
 
 <?php
-
+	session_start();
         include("config.php");
 if(isset($_SESSION['ID'])){
 		
@@ -77,32 +77,39 @@ else{
       </tr>
          </tbody>
      
+
+
+
   </table>
                       
-                      <table border="1" style="width: 350px">
+                      <table border="1" style="width: 500px">
     <tbody>
         <tr>
-        <td> &nbsp;Course ID</td>
         <td> &nbsp;Course Name</td>
+        <td> &nbsp;Student ID </td>
+            <td> &nbsp;Sec</td>
+            <td> &nbsp;Date</td>
       </tr>
         <br>
         
-	  <tr>
-        <td>1236052</td>
-        <td>Telecom</td>
-      </tr>
-	  <tr>
-        <td>1236053</td>
-         <td>Coding</td>
-      </tr>
-	  <tr>
-         <td>1236054</td>
-         <td>Database</td>
-      </tr>
-	  <tr>
-         <td>1236055</td>
-         <td>Webtech</td>
-      </tr>
+<?php 
+
+$sql="SELECT course.course_name,studentcourse.student_ID,studentcourse.sec,studentcourse.date_date FROM studentcourse,course WHERE studentcourse.student_ID='".$_SESSION['ID']."' AND studentcourse.course_ID= course.ID ORDER BY studentcourse.date_date";
+
+if ($result=mysqli_query($objCon,$sql))
+  {
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo "<tr>";
+      echo "<td>".$row[0]."</td>";
+      echo "<td>".$row[1]."</td>";
+      echo "<td>".$row[2]."</td>";
+      echo "<td>".$row[3]."</td>";
+      echo "</tr>";
+    }
+}
+mysqli_free_result($result);
+?>
         
         
        

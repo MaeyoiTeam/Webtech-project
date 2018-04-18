@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include("config.php");
 date_default_timezone_set("Asia/Bangkok");
 $current_time=date("G:i:s", time()); 

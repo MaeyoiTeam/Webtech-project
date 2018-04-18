@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 17, 2018 at 06:51 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Host: mysql56
+-- Generation Time: Apr 18, 2018 at 02:50 AM
+-- Server version: 5.6.33
+-- PHP Version: 5.6.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webtech_project`
+-- Database: `jakapatb_59010187`
 --
 
 -- --------------------------------------------------------
@@ -57,8 +55,9 @@ CREATE TABLE `coursedate` (
   `sec` int(11) DEFAULT NULL,
   `date_date` date DEFAULT NULL,
   `daytime_ID` int(11) DEFAULT NULL,
-  `active` enum('on','off','wait') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `active` enum('on','off','wait','break') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
   `current_start` time NOT NULL,
+  `breaktime` time NOT NULL,
   `current_finish` time NOT NULL,
   `duration` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -67,23 +66,23 @@ CREATE TABLE `coursedate` (
 -- Dumping data for table `coursedate`
 --
 
-INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`, `active`, `current_start`, `current_finish`, `duration`) VALUES
-(180001, 1236055, 21, '2018-04-18', 1, 'on', '07:16:58', '06:53:43', '00:00:04'),
-(180002, 1236054, 21, '2018-04-18', 2, 'on', '07:09:23', '00:00:00', '00:00:05'),
-(180003, 1236052, 21, '2018-04-19', 1, 'off', '07:34:05', '07:34:09', '00:00:04'),
-(180004, 1236053, 21, '2018-04-19', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180005, 1236054, 22, '2018-04-18', 1, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180006, 1236052, 22, '2018-04-18', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180007, 1236053, 22, '2018-04-18', 3, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180008, 1236055, 22, '2018-04-19', 1, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180009, 1236055, 21, '2018-04-25', 1, 'on', '07:10:51', '00:00:00', '00:00:00'),
-(180010, 1236054, 21, '2018-04-25', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180011, 1236052, 21, '2018-04-26', 1, 'off', '00:00:00', '00:00:00', '00:00:10'),
-(180012, 1236053, 21, '2018-04-26', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180013, 1236054, 22, '2018-04-25', 1, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180014, 1236052, 22, '2018-04-25', 2, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180015, 1236053, 22, '2018-04-25', 3, 'off', '00:00:00', '00:00:00', '00:00:00'),
-(180016, 1236055, 22, '2018-04-26', 1, 'off', '00:00:00', '00:00:00', '00:00:00');
+INSERT INTO `coursedate` (`ID`, `course_ID`, `sec`, `date_date`, `daytime_ID`, `active`, `current_start`, `breaktime`, `current_finish`, `duration`) VALUES
+(180001, 1236055, 21, '2018-04-18', 1, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180002, 1236054, 21, '2018-04-18', 2, 'wait', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180003, 1236052, 21, '2018-04-19', 1, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180004, 1236053, 21, '2018-04-19', 2, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180005, 1236054, 22, '2018-04-18', 1, 'off', '09:17:08', '09:27:16', '09:17:55', '00:06:47'),
+(180006, 1236052, 22, '2018-04-18', 2, 'wait', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180007, 1236053, 22, '2018-04-18', 3, 'wait', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180008, 1236055, 22, '2018-04-19', 1, 'wait', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180009, 1236055, 21, '2018-04-25', 1, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180010, 1236054, 21, '2018-04-25', 2, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180011, 1236052, 21, '2018-04-26', 1, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180012, 1236053, 21, '2018-04-26', 2, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180013, 1236054, 22, '2018-04-25', 1, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180014, 1236052, 22, '2018-04-25', 2, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180015, 1236053, 22, '2018-04-25', 3, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(180016, 1236055, 22, '2018-04-26', 1, 'off', '00:00:00', '00:00:00', '00:00:00', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,12 +153,12 @@ INSERT INTO `member` (`ID`, `Username`, `Password`, `Active`, `Status`) VALUES
 (59010697, 'Nontakon', '59010697', 0, 'Student'),
 (59010719, 'Nanthapong', '59010719', 0, 'Student'),
 (59010731, 'Namfon', '59010731', 0, 'Student'),
-(59010736, 'Nithi', '59010736', 0, 'Student'),
+(59010736, 'Nithi', '59010736', 1, 'Student'),
 (59010748, 'Niwat', '59010748', 0, 'Student'),
 (59010792, 'Papon', '59010792', 0, 'Student'),
 (59010940, 'Phattana', '59010940', 0, 'Student'),
 (59011201, 'Waritsara', '59011201', 0, 'Student'),
-(90000001, 'Teacher', 'teacher', 1, 'Teacher');
+(90000001, 'Teacher', 'teacher', 0, 'Teacher');
 
 -- --------------------------------------------------------
 
@@ -174,6 +173,32 @@ CREATE TABLE `room` (
   `active` enum('wait','present','Late','miss') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'wait',
   `student_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`ID`, `corusedate_ID`, `num1`, `active`, `student_ID`) VALUES
+(969, 180002, 1, 'wait', 59010164),
+(970, 180002, 2, 'wait', 59010203),
+(971, 180002, 3, 'wait', 59010205),
+(972, 180002, 4, 'wait', 59010249),
+(973, 180002, 5, 'wait', 59010386),
+(974, 180002, 6, 'wait', 59010697),
+(975, 180007, 1, 'wait', 59010940),
+(976, 180007, 2, 'wait', 59011201),
+(977, 180006, 1, 'wait', 59010940),
+(978, 180006, 2, 'wait', 59011201),
+(979, 180008, 1, 'wait', 59010940),
+(980, 180008, 2, 'wait', 59011201),
+(981, 180005, 1, 'wait', 59010187),
+(982, 180005, 2, 'wait', 59010719),
+(983, 180005, 3, 'wait', 59010731),
+(984, 180005, 4, 'wait', 59010736),
+(985, 180005, 5, 'wait', 59010748),
+(986, 180005, 6, 'wait', 59010792),
+(987, 180005, 7, 'wait', 59010940),
+(988, 180005, 8, 'wait', 59011201);
 
 -- --------------------------------------------------------
 
@@ -270,8 +295,8 @@ INSERT INTO `studentcourse` (`ID`, `course_ID`, `student_ID`, `sec`, `date_date`
 (31, 1236053, 59011201, 22, '2018-04-25'),
 (6, 1236054, 59010164, 21, '2018-04-18'),
 (22, 1236054, 59010164, 21, '2018-04-25'),
-(2, 1236054, 59010187, 21, '2018-04-18'),
 (18, 1236054, 59010187, 21, '2018-04-25'),
+(2, 1236054, 59010187, 22, '2018-04-18'),
 (52, 1236054, 59010203, 21, '2018-04-18'),
 (53, 1236054, 59010203, 21, '2018-04-25'),
 (60, 1236054, 59010205, 21, '2018-04-18'),
@@ -339,7 +364,7 @@ CREATE TABLE `studentt` (
   `Major` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Birthdate` date DEFAULT NULL,
   `Gender` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Phone` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Phone` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Email` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -349,7 +374,7 @@ CREATE TABLE `studentt` (
 
 INSERT INTO `studentt` (`ID`, `Fname`, `Lname`, `Faculty`, `Major`, `Birthdate`, `Gender`, `Phone`, `Email`) VALUES
 (59010164, 'Kanutsanun ', 'Nithipanich', 'Engineering', 'Information Engineering', '1997-08-28', 'Male', '094-291570', '59010164@kmitl.ac.th'),
-(59010187, 'Jakkapat ', 'Booroj', 'Engineering', 'Information Engineering', '1997-01-19', 'Male', '087-702164', '59010187@kmitl.ac.th'),
+(59010187, 'Jakkapat ', 'Boonroj', 'Engineering', 'Information Engineering', '1997-01-19', 'Male', '087-7021640', '59010187@kmitl.ac.th'),
 (59010203, 'Jirapat', 'Sirasri', 'Engineering', 'Information Engineering', '1998-02-15', 'Male', '0999999999', '59010203@kmitl.ac.th'),
 (59010205, 'Jirapat', 'Pitaksinakorn', 'Engineering', 'Information Engineering', '1997-07-04', 'Male', '0970767580', '59010205@kmitl.ac.th'),
 (59010249, 'Chalermwut', 'Lermwutwarakitti', 'Engineering', 'Information Engineering', '1997-07-13', 'Male', '0814140760', '59010249@kmitl.ac.th'),
@@ -474,14 +499,12 @@ ALTER TABLE `teachert`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=718;
-
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=989;
 --
 -- AUTO_INCREMENT for table `studentcourse`
 --
 ALTER TABLE `studentcourse`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
-
 --
 -- Constraints for dumped tables
 --
@@ -528,7 +551,6 @@ ALTER TABLE `studentt`
 --
 ALTER TABLE `teachert`
   ADD CONSTRAINT `teachert_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `member` (`ID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

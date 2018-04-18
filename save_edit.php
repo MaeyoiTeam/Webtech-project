@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include("config.php");
 	$strSQL = "SELECT * FROM studentt WHERE ID = '".$_SESSION['ID']."' ";
 	$objQuery = mysqli_query($objCon,$strSQL);
