@@ -9,16 +9,23 @@ session_start();
     $result=mysqli_query($objCon,$class);
     $row=mysqli_fetch_row($result);
     
+
     if(isset($row[0])){
-        if($row[2]=='off'){
-             echo ("<script LANGUAGE='JavaScript'>window.alert('Wait until Teacher create class');window.location.href='student_classroom.php';</script>");
-}
-        else {
-      date_default_timezone_set("Asia/Bangkok");
+
+ date_default_timezone_set("Asia/Bangkok");
     $current_time=date("G:i:s", time()); 
     $time1=strtotime($row[1]);
     $time2=strtotime($current_time);
-    if($time2>$time1+1800){
+
+        if($row[2]=='off'){
+             echo ("<script LANGUAGE='JavaScript'>window.alert('Wait until Teacher create class');window.location.href='student_classroom.php';</script>");
+}
+        else if($row[2]=='wait'){
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Not time yet');window.location.href='student_classroom.php';</script>");
+            $active= 'wait';}
+        
+        else {
+            if($time2>$time1+1800){
         $active= 'miss';
 }
     else if($time2>$time1+900){
@@ -31,13 +38,14 @@ session_start();
         echo ("<script LANGUAGE='JavaScript'>window.alert('Not time yet');window.location.href='student_classroom.php';</script>");
         $active= 'wait';
 }
+    }
 
     $sqlWait = "UPDATE room SET active = '".$active."' WHERE corusedate_ID = '".$row[0]."' AND  student_ID='".$_SESSION['ID']."'";
     $result=mysqli_query($objCon,$sqlWait);
 	
     $_SESSION['coursedate']=$row[0];
          echo ("<script LANGUAGE='JavaScript'>window.alert('Join Class Success');window.location.href='student_classroom.php';</script>");
-        }
+        
     }
     else{
         echo ("<script LANGUAGE='JavaScript'>window.alert('404 Not found');window.location.href='student_classroom.php';</script>");

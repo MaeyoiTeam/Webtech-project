@@ -68,9 +68,9 @@ else{
                      $subject = "SELECT course.ID,course.course_name FROM course";
                      if($result=mysqli_query($objCon,$subject)){
   // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
+  while ($row1=mysqli_fetch_row($result))
     {
-      echo "<option value='".$row[0]."'> ".$row[1]."</option>";
+      echo "<option value='".$row1[0]."'> ".$row1[1]."</option>";
     }
   // Free result set
   mysqli_free_result($result);

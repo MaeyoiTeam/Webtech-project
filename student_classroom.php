@@ -59,6 +59,25 @@ else{
            
              <article >
 <div class="content" >
+<?php
+    $class ="SELECT course.course_name FROM coursedate,room,course WHERE coursedate.course_ID=course.ID AND coursedate.ID=room.corusedate_ID AND coursedate.active != 'off' AND room.student_ID='".$_SESSION['ID']."'";
+    if($result=mysqli_query($objCon,$class)){
+  // Fetch one and one row
+if($row[0]==''){
+        echo "you still learning ..";
+  while ($row=mysqli_fetch_row($result))
+    {
+      echo $row[0];
+
+    }
+
+  // Free result set
+  mysqli_free_result($result);
+}
+    }
+
+?>
+
 <form name="join" method="post" action="save_join.php">
                      Subject :<select name='subject'>
 <?php
@@ -109,13 +128,11 @@ else{
 
 
 </form>
+
+
                  </div>
 </article>
 
-
-
-	
-            </article>
             
             
             <aside >

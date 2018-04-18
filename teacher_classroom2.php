@@ -29,8 +29,8 @@ if ($result=mysqli_query($objCon,$sql))
     {
       $ID[$x]=$row[0];
       $active[$x] =$row[1];
-      $fname[$x] =$row[2];
-      $lname[$x]=$row[3];
+      $lname[$x] =$row[2];
+      $fname[$x]=$row[3];
       $x++;
     }
   // Free result set
@@ -115,7 +115,7 @@ echo  "<table cellspacing=25 cellpadding=25>";
         echo    "<div id='t".$temp."' style='display:none'>";
                 if(isset($ID[$temp])){
                     
-                    echo "<br><img class='imgs' src='images/".$ID[$temp].".jpg' width='100%''>";
+                    echo "<br><img class='imgs' src='images/".$ID[$temp].".jpg' width='100%' float:center'>";
                     echo "<p>".$fname[$temp]." ".$lname[$temp]."</p>";        
                 }
             echo    "</div>";

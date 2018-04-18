@@ -5,33 +5,26 @@ session_start();
 	$subject=$_POST['subject'];
 	$date=$_POST['date'];
 	$sec=$_POST['sec'];
+    $date2=$_POST['date2'];
+	$sec2=$_POST['sec2'];
 
-
-    $class ="SELECT coursedate.ID,coursedate.current_start FROM coursedate WHERE coursedate.course_ID = '".$subject."' AND coursedate.sec = '".$sec."' AND coursedate.date_date = '".$date."' ";
+    $class ="SELECT coursedate.ID FROM coursedate WHERE coursedate.course_ID = '".$subject."' AND coursedate.sec = '".$sec."' AND coursedate.date_date = '".$date."' ";
     $result=mysqli_query($objCon,$class);
     $row=mysqli_fetch_row($result);
+
+    if($row[0]==''){
+     echo ("<script LANGUAGE='JavaScript'>window.alert('not found');window.location.href='student_page.php';</script>");
+}
+    else{
+
+
+    $sqlWait = "UPDATE studentcourse SET studentcourse.sec = '".$sec2."', studentcourse.date_date = '".$date2."' WHERE  studentcourse.course_ID = '".$subject."'  AND studentcourse.sec='".$sec."'  AND studentcourse.date_date = '".$date."' AND studentcourse.student_ID='".$_SESSION['ID']."' ";
+    $result=mysqli_query($objCon,$sqlWait);
     
 
-  date_default_timezone_set("Asia/Bangkok");
-    $current_time=date("G:i:s", time()); 
-    $time1=strtotime($row[1]);
-    $time2=strtotime($current_time);
-    if($time2>$time1+1800){
-        $active= 'miss';
-}
-    else if($time2>$time1+900){
-        $active= 'Late';
-}
-    else if($time2>=$time1){
-        $active= 'present';
-}
-    else {
-        echo ("<script LANGUAGE='JavaScript'>window.alert('Not time yet');window.location.href='student_classroom.php';</script>");
-        $active= 'wait';
-}
-    $_SESSION['coursedate']=$row[0];
-   echo ("<script LANGUAGE='JavaScript'>window.alert('Swap compelete');window.location.href='student_page.php';</script>");
-	mysqli_close($objCon);
 
-
+     echo ("<script LANGUAGE='JavaScript'>window.alert('Swap compelete');window.location.href='student_page.php';</script>");
+	
+    }
+mysqli_close($objCon);
 ?>
