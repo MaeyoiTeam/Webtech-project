@@ -13,7 +13,7 @@ session_start();
     $row=mysqli_fetch_row($result);
 
     if($row[0]==''){
-     echo ("<script LANGUAGE='JavaScript'>window.alert('not found');window.location.href='student_page.php';</script>");
+     echo ("<script LANGUAGE='JavaScript'>window.alert('not found');window.location.href='student_course.php';</script>");
 }
     else{
 
@@ -23,7 +23,7 @@ session_start();
     
 
 
-     echo ("<script LANGUAGE='JavaScript'>window.alert('Swap compelete');window.location.href='student_page.php';</script>");
+     echo ("<script LANGUAGE='JavaScript'>window.alert('Swap compelete');window.location.href='student_course.php';</script>");
 	
     }
 mysqli_close($objCon);
